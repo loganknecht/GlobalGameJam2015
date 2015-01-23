@@ -1,0 +1,747 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+SceneSettings:
+  m_ObjectHideFlags: 0
+  m_PVSData: 
+  m_PVSObjectsArray: []
+  m_PVSPortalsArray: []
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: .25
+    backfaceThreshold: 100
+--- !u!104 &2
+RenderSettings:
+  m_Fog: 0
+  m_FogColor: {r: .5, g: .5, b: .5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: .00999999978
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: .5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 0}
+  m_ObjectHideFlags: 0
+--- !u!127 &3
+LevelGameManager:
+  m_ObjectHideFlags: 0
+--- !u!157 &4
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  m_LightProbes: {fileID: 0}
+  m_Lightmaps: []
+  m_LightmapsMode: 1
+  m_BakedColorSpace: 0
+  m_UseDualLightmapsInForward: 0
+  m_LightmapEditorSettings:
+    m_Resolution: 50
+    m_LastUsedResolution: 0
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
+    m_BounceBoost: 1
+    m_BounceIntensity: 1
+    m_SkyLightColor: {r: .860000014, g: .930000007, b: 1, a: 1}
+    m_SkyLightIntensity: 0
+    m_Quality: 0
+    m_Bounces: 1
+    m_FinalGatherRays: 1000
+    m_FinalGatherContrastThreshold: .0500000007
+    m_FinalGatherGradientThreshold: 0
+    m_FinalGatherInterpolationPoints: 15
+    m_AOAmount: 0
+    m_AOMaxDistance: .100000001
+    m_AOContrast: 1
+    m_LODSurfaceMappingDistance: 1
+    m_Padding: 0
+    m_TextureCompression: 0
+    m_LockAtlas: 0
+--- !u!196 &5
+NavMeshSettings:
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    agentRadius: .5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: .400000006
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    accuratePlacement: 0
+    minRegionArea: 2
+    widthInaccuracy: 16.666666
+    heightInaccuracy: 10
+  m_NavMesh: {fileID: 0}
+--- !u!1 &84616314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 84616316}
+  - 114: {fileID: 84616315}
+  m_Layer: 0
+  m_Name: '0: LOOK AT ME FIRST'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &84616315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84616314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5492a1216401c8a4e8349956f42316ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys: []
+  _serializedStateValues: []
+  ReadMeFirst: 1
+  HoverOverMe: 2
+  WayBelow: 3
+--- !u!4 &84616316
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84616314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &93669776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 93669777}
+  - 114: {fileID: 93669779}
+  - 114: {fileID: 93669778}
+  m_Layer: 0
+  m_Name: '6: Custom Editors'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &93669777
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93669776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+--- !u!114 &93669778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93669776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e752cdb5d996d614694f1621677d6359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - CustomTypeEditorNonGeneric
+  - CustomTypeEditorFloatString
+  - ICustomTypeEditorInherited
+  - CustomTypeEditorInheritedA
+  - CustomTypeEditorInheritedB
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAEZGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLkN1c3RvbVR5cGVFZGl0b3JOb25HZW5lcmljAQAAAAVWYWx1ZQAIAgAAAAAAAAAL
+  - 
+  - 
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAEZGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLkN1c3RvbVR5cGVFZGl0b3JJbmhlcml0ZWRBAAAAAAIAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAEZGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLkN1c3RvbVR5cGVFZGl0b3JJbmhlcml0ZWRCAAAAAAIAAAAL
+  CustomTypeEditorNonGeneric:
+    Value: 0
+--- !u!114 &93669779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93669776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3148756d2b82942b59da1545ae926d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys: []
+  _serializedStateValues: []
+  A: 0
+  B: 0
+--- !u!1 &137653984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 137653987}
+  - 114: {fileID: 137653986}
+  - 114: {fileID: 137653985}
+  m_Layer: 0
+  m_Name: '2: Lists and Dictionaries'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &137653985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137653984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56218ba66107b645bf59f56324bffa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences:
+  - {fileID: 93669777}
+  - {fileID: 746785306}
+  _serializedStateKeys:
+  - StrStrDict
+  - EnumTransformDict
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAEAQAAAOIBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuRGljdGlvbmFyeWAyW1tTeXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj0yLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj0yLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldXQQAAAAHVmVyc2lvbghDb21wYXJlcghIYXNoU2l6ZQ1LZXlWYWx1ZVBhaXJzAAMAAwiSAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkdlbmVyaWNFcXVhbGl0eUNvbXBhcmVyYDFbW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTIuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dCOYBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuS2V5VmFsdWVQYWlyYDJbW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTIuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTIuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dW10/AAAACQIAAAAMAAAACQMAAAAEAgAAAJIBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuR2VuZXJpY0VxdWFsaXR5Q29tcGFyZXJgMVtbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0AAAAABwMAAAAAAQAAAAMAAAAD5AFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5LZXlWYWx1ZVBhaXJgMltbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0EBAAAAOQBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuS2V5VmFsdWVQYWlyYDJbW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTIuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTIuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dAgAAAANrZXkFdmFsdWUBAQYFAAAAAmFiBgYAAAACY2QBBwAAAAQAAAAGCAAAAAAGCQAAAANhYWIBCgAAAAQAAAAGCwAAAAJlZgoL
+  - AAEAAAD/////AQAAAAAAAAAEAQAAAKECU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuRGljdGlvbmFyeWAyW1tGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckRpY3Rpb25hcmllcytFbnVtLCBBc3NlbWJseS1DU2hhcnAsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXSxbVW5pdHlFbmdpbmUuVHJhbnNmb3JtLCBVbml0eUVuZ2luZSwgVmVyc2lvbj0wLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXQQAAAAHVmVyc2lvbghDb21wYXJlcghIYXNoU2l6ZQ1LZXlWYWx1ZVBhaXJzAAMAAwjbAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkVxdWFsaXR5Q29tcGFyZXJgMStEZWZhdWx0Q29tcGFyZXJbW0Z1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVyRGljdGlvbmFyaWVzK0VudW0sIEFzc2VtYmx5LUNTaGFycCwgVmVyc2lvbj0wLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXQilAlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLktleVZhbHVlUGFpcmAyW1tGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckRpY3Rpb25hcmllcytFbnVtLCBBc3NlbWJseS1DU2hhcnAsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXSxbVW5pdHlFbmdpbmUuVHJhbnNmb3JtLCBVbml0eUVuZ2luZSwgVmVyc2lvbj0wLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXVtdHgAAAAkCAAAADAAAAAkDAAAABAIAAADbAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkVxdWFsaXR5Q29tcGFyZXJgMStEZWZhdWx0Q29tcGFyZXJbW0Z1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVyRGljdGlvbmFyaWVzK0VudW0sIEFzc2VtYmx5LUNTaGFycCwgVmVyc2lvbj0wLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXQAAAAAHAwAAAAABAAAAAgAAAAOjAlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLktleVZhbHVlUGFpcmAyW1tGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckRpY3Rpb25hcmllcytFbnVtLCBBc3NlbWJseS1DU2hhcnAsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXSxbVW5pdHlFbmdpbmUuVHJhbnNmb3JtLCBVbml0eUVuZ2luZSwgVmVyc2lvbj0wLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXQwFAAAAD0Fzc2VtYmx5LUNTaGFycAwGAAAAC1VuaXR5RW5naW5lBAQAAACjAlN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLktleVZhbHVlUGFpcmAyW1tGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckRpY3Rpb25hcmllcytFbnVtLCBBc3NlbWJseS1DU2hhcnAsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXSxbVW5pdHlFbmdpbmUuVHJhbnNmb3JtLCBVbml0eUVuZ2luZSwgVmVyc2lvbj0wLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXQIAAAADa2V5BXZhbHVlBARSRnVsbEluc3BlY3Rvci5TYW1wbGVzLkJpbmFyeUZvcm1hdHRlclNhbXBsZS5TYW1wbGVCaW5hcnlGb3JtYXR0ZXJEaWN0aW9uYXJpZXMrRW51bQUAAAAVVW5pdHlFbmdpbmUuVHJhbnNmb3JtBgAAAAUHAAAAUkZ1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVyRGljdGlvbmFyaWVzK0VudW0BAAAAB3ZhbHVlX18ACAUAAAABAAAACQgAAAABCQAAAAQAAAABCgAAAAcAAAAAAAAACQsAAAAFCAAAABVVbml0eUVuZ2luZS5UcmFuc2Zvcm0BAAAAAmlkAAgGAAAAAAAAAAELAAAACAAAAAEAAAAL
+--- !u!114 &137653986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137653984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd07ffa04090c4248875ed5c4ee0c131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys: []
+  _serializedStateValues: []
+  IntList: 0500000002000000
+  IntArray: 01000000020000000300000004000000
+--- !u!4 &137653987
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137653984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+--- !u!1 &233353981
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 233353983}
+  - 114: {fileID: 233353982}
+  m_Layer: 0
+  m_Name: fiSceneMetadata
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &233353982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233353981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55892d17d5879f40836c3fa775028c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - _keys
+  - _values
+  _serializedStateValues:
+  - '[]'
+  - '[]'
+  _keys: []
+--- !u!4 &233353983
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233353981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!1 &291673656
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 291673658}
+  - 114: {fileID: 291673657}
+  m_Layer: 0
+  m_Name: fiBackupSceneStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &291673657
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 291673656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2402078a2026eb74499c6534c267da6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Objects: []
+--- !u!4 &291673658
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 291673656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!1 &381142108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 381142109}
+  m_Layer: 0
+  m_Name: == BINARY FORMATTER SERIALIZER REQUIRED ==
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381142109
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381142108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!1 &504801295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 504801297}
+  - 114: {fileID: 504801296}
+  m_Layer: 0
+  m_Name: '5: Inheritance'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &504801296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 504801295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b50137e8d43c434d9bda26229a7e04e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - Interface
+  - InterfaceList
+  - AbstractValue
+  - AbstractTypeList
+  - BaseValue
+  - BaseTypeList
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAFpGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0Rlcml2ZWRJRmFjZUEBAAAAAUEACAIAAABWAAAACw==
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAEAQAAAL8BU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0lGYWNlLCBBc3NlbWJseS1DU2hhcnAsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXV0DAAAABl9pdGVtcwVfc2l6ZQhfdmVyc2lvbgQAAFRGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0lGYWNlW10CAAAACAgJAwAAAAEAAAABAAAABwMAAAAAAQAAAAQAAAAEUkZ1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVySW5oZXJpdGFuY2UrSUZhY2UCAAAACQQAAAANAwUEAAAAWkZ1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVySW5oZXJpdGFuY2UrRGVyaXZlZElGYWNlQQEAAAABQQAIAgAAANT///8L
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAF1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0Rlcml2ZWRBYnN0cmFjdEIBAAAAAUIBAgAAAAYDAAAAA2FhYgs=
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAEAQAAAMYBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0Fic3RyYWN0VHlwZSwgQXNzZW1ibHktQ1NoYXJwLCBWZXJzaW9uPTAuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAABbRnVsbEluc3BlY3Rvci5TYW1wbGVzLkJpbmFyeUZvcm1hdHRlclNhbXBsZS5TYW1wbGVCaW5hcnlGb3JtYXR0ZXJJbmhlcml0YW5jZStBYnN0cmFjdFR5cGVbXQIAAAAICAkDAAAAAQAAAAEAAAAHAwAAAAABAAAABAAAAARZRnVsbEluc3BlY3Rvci5TYW1wbGVzLkJpbmFyeUZvcm1hdHRlclNhbXBsZS5TYW1wbGVCaW5hcnlGb3JtYXR0ZXJJbmhlcml0YW5jZStBYnN0cmFjdFR5cGUCAAAACQQAAAANAwUEAAAAXUZ1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVySW5oZXJpdGFuY2UrRGVyaXZlZEFic3RyYWN0QQEAAAABQQAIAgAAAHoAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAFlGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0Rlcml2ZWRCYXNlQgEAAAABQgECAAAABgMAAAADYWFiCw==
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAEAQAAAMIBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0Jhc2VUeXBlLCBBc3NlbWJseS1DU2hhcnAsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXV0DAAAABl9pdGVtcwVfc2l6ZQhfdmVyc2lvbgQAAFdGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckluaGVyaXRhbmNlK0Jhc2VUeXBlW10CAAAACAgJAwAAAAIAAAACAAAABwMAAAAAAQAAAAQAAAAEVUZ1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVySW5oZXJpdGFuY2UrQmFzZVR5cGUCAAAACQQAAAANAwUEAAAAWUZ1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVySW5oZXJpdGFuY2UrRGVyaXZlZEJhc2VBAQAAAAFBAAgCAAAAKwAAAAs=
+--- !u!4 &504801297
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 504801295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+--- !u!1 &636905179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 636905180}
+  m_Layer: 0
+  m_Name: == BINARY FORMATTER SERIALIZER REQUIRED ==
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &636905180
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 636905179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+--- !u!1 &746785304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 746785306}
+  - 114: {fileID: 746785305}
+  m_Layer: 0
+  m_Name: '7: Nullable Types'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &746785305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 746785304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b62ec94d212f94498cf4fe7bbe2345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - Bounds
+  - Color
+  - Vector2
+  - Vector3
+  - Vector4
+  - LayerMask
+  - UnityTypes
+  _serializedStateValues:
+  - 
+  - 
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAAtVbml0eUVuZ2luZQUBAAAAE1VuaXR5RW5naW5lLlZlY3RvcjICAAAAAXgBeQAACwsCAAAAcT2KPwAAAAAL
+  - 
+  - 
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAAtVbml0eUVuZ2luZQUBAAAAFVVuaXR5RW5naW5lLkxheWVyTWFzawEAAAAFdmFsdWUACAIAAAAUAAAACw==
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAGdGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlck51bGxhYmxlVW5pdHlUeXBlcytVbml0eVR5cGVzQ29udGFpbmVyBgAAAAZCb3VuZHMFQ29sb3IHVmVjdG9yMgdWZWN0b3IzB1ZlY3RvcjQJTGF5ZXJNYXNrAwMDAwMDa1N5c3RlbS5OdWxsYWJsZWAxW1tVbml0eUVuZ2luZS5Cb3VuZHMsIFVuaXR5RW5naW5lLCBWZXJzaW9uPTAuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF1dalN5c3RlbS5OdWxsYWJsZWAxW1tVbml0eUVuZ2luZS5Db2xvciwgVW5pdHlFbmdpbmUsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXV1sU3lzdGVtLk51bGxhYmxlYDFbW1VuaXR5RW5naW5lLlZlY3RvcjIsIFVuaXR5RW5naW5lLCBWZXJzaW9uPTAuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbF1dbFN5c3RlbS5OdWxsYWJsZWAxW1tVbml0eUVuZ2luZS5WZWN0b3IzLCBVbml0eUVuZ2luZSwgVmVyc2lvbj0wLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGxdXWxTeXN0ZW0uTnVsbGFibGVgMVtbVW5pdHlFbmdpbmUuVmVjdG9yNCwgVW5pdHlFbmdpbmUsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXV1uU3lzdGVtLk51bGxhYmxlYDFbW1VuaXR5RW5naW5lLkxheWVyTWFzaywgVW5pdHlFbmdpbmUsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXV0CAAAADAQAAAALVW5pdHlFbmdpbmUFAwAAABJVbml0eUVuZ2luZS5Cb3VuZHMCAAAABmNlbnRlcgRzaXplBAQTVW5pdHlFbmdpbmUuVmVjdG9yMwQAAAATVW5pdHlFbmdpbmUuVmVjdG9yMwQAAAAEAAAABQUAAAATVW5pdHlFbmdpbmUuVmVjdG9yMwMAAAABeAF5AXoAAAALCwsEAAAAAAAAAAAAAAAAAAAAAQYAAAAFAAAAAAAAAAAAgEIAAAAACgoBBwAAAAUAAAAAAABCAACgQAAAAAAFCAAAABNVbml0eUVuZ2luZS5WZWN0b3I0BAAAAAF4AXkBegF3AAAAAAsLCwsEAAAAAAAAAAAAAEIAAAAAAAAAQgoL
+--- !u!4 &746785306
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 746785304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+--- !u!1 &1012197966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1012197968}
+  - 114: {fileID: 1012197967}
+  m_Layer: 0
+  m_Name: '3: Structs'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1012197967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012197966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785f6628d6e4e0e4193e22967af77ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - StructValue
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAFBGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlclN0cnVjdCtNeVN0cnVjdAMAAAABQQFCAUMAAAEICwIAAAADAAAAAAAAQAYDAAAADjRmNjgyYzIwNjg2OTJlCw==
+  StructValue:
+    A: 3
+    B: 2
+    C: 4f682c2068692e
+--- !u!4 &1012197968
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012197966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+--- !u!1 &1723728204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1723728209}
+  - 114: {fileID: 1723728208}
+  - 114: {fileID: 1723728207}
+  - 114: {fileID: 1723728206}
+  - 114: {fileID: 1723728205}
+  m_Layer: 0
+  m_Name: '1: Simple Types'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1723728205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723728204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483531a2c8088fc419c3c0591016d4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - Serialized6
+  - Serialized7
+  - Serialized0
+  - Serialized1
+  - Serialized2
+  - Serialized3
+  - Serialized4
+  - Serialized5
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAAAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAAAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAEAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAEAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAEAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAEAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAEAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAG1GdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlckJlaGF2aW9yU2VyaWFsaXphdGlvbitOb3RTZXJpYWxpemFibGVCeVVuaXR5AQAAAAVWYWx1ZQAIAgAAAAEAAAAL
+  Serialized0:
+    Value: 1
+  Serialized1:
+    Value: 1
+  Serialized2:
+    Value: 1
+  Serialized3:
+    Value: 1
+  Serialized4:
+    Value: 1
+  Serialized5:
+    Value: 1
+--- !u!114 &1723728206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723728204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02955efdacf01e44bbcd54452fc646c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - Value
+  - ContainedValue
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAEAQAAAAxTeXN0ZW0uSW50MzIBAAAAB21fdmFsdWUACAEAAAAL
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAFVGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlclByb3BlcnRpZXMrQ29udGFpbmVyAQAAABk8U3ViVmFsdWU+a19fQmFja2luZ0ZpZWxkAAgCAAAAAgAAAAs=
+--- !u!114 &1723728207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723728204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f461dd4179504645a4767ade7d0c816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - StructValue
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAFxGdWxsSW5zcGVjdG9yLlNhbXBsZXMuQmluYXJ5Rm9ybWF0dGVyU2FtcGxlLlNhbXBsZUJpbmFyeUZvcm1hdHRlclNpbXBsZVR5cGVzK1N0cnVjdENvbnRhaW5lcgQAAAAISW50VmFsdWUKRmxvYXRWYWx1ZQtTdHJpbmdWYWx1ZQlCb29sVmFsdWUAAAEACAsBAgAAAAEAAAAAAIA/BgMAAAACMzEBCw==
+  IntValue: 1
+  FloatValue: 1
+  StringValue: 31
+  BoolValue: 1
+  StructValue:
+    IntValue: 1
+    FloatValue: 1
+    StringValue: 31
+    BoolValue: 1
+--- !u!114 &1723728208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723728204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5d9006ee68e684a8cfc7f5756cffde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - UnityTypes
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAMAwAAAAtVbml0eUVuZ2luZQUBAAAAX0Z1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuU2FtcGxlQmluYXJ5Rm9ybWF0dGVyVW5pdHlUeXBlcytVbml0eVR5cGVzQ29udGFpbmVyBgAAAAZCb3VuZHMFQ29sb3IHVmVjdG9yMgdWZWN0b3IzB1ZlY3RvcjQJTGF5ZXJNYXNrBAQEBAQEElVuaXR5RW5naW5lLkJvdW5kcwMAAAARVW5pdHlFbmdpbmUuQ29sb3IDAAAAE1VuaXR5RW5naW5lLlZlY3RvcjIDAAAAE1VuaXR5RW5naW5lLlZlY3RvcjMDAAAAE1VuaXR5RW5naW5lLlZlY3RvcjQDAAAAFVVuaXR5RW5naW5lLkxheWVyTWFzawMAAAACAAAABQQAAAASVW5pdHlFbmdpbmUuQm91bmRzAgAAAAZjZW50ZXIEc2l6ZQQEE1VuaXR5RW5naW5lLlZlY3RvcjMDAAAAE1VuaXR5RW5naW5lLlZlY3RvcjMDAAAAAwAAAAUFAAAAE1VuaXR5RW5naW5lLlZlY3RvcjMDAAAAAXgBeQF6AAAACwsLAwAAAAAAgD8AAIA/AACAPwEGAAAABQAAAAAAAEAAAABAAAAAQAUHAAAAEVVuaXR5RW5naW5lLkNvbG9yBAAAAAFyAWcBYgFhAAAAAAsLCwsDAAAA09JyP4tB1j2LQdY9AAAAAAUIAAAAE1VuaXR5RW5naW5lLlZlY3RvcjICAAAAAXgBeQAACwsDAAAAAACAPwAAgD8BCQAAAAUAAAAAAIA/AACAPwAAgD8FCgAAABNVbml0eUVuZ2luZS5WZWN0b3I0BAAAAAF4AXkBegF3AAAAAAsLCwsDAAAAAACAPwAAgD8AAIA/AACAPwULAAAAFVVuaXR5RW5naW5lLkxheWVyTWFzawEAAAAFdmFsdWUACAMAAAAAAAAACw==
+  UnityTypes:
+    Bounds:
+      m_Center: {x: 1, y: 1, z: 1}
+      m_Extent: {x: 1, y: 1, z: 1}
+    Color: {r: .948529422, g: .104617201, b: .104617201, a: 0}
+    Vector2: {x: 1, y: 1}
+    Vector3: {x: 1, y: 1, z: 1}
+    Vector4: {x: 1, y: 1, z: 1, w: 1}
+    LayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+--- !u!4 &1723728209
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1723728204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+--- !u!1 &1920985724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1920985726}
+  - 114: {fileID: 1920985725}
+  m_Layer: 0
+  m_Name: '4: Generics'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1920985725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1920985724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cf92a81f791264cadae3893295d042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectReferences: []
+  _serializedStateKeys:
+  - GenericInt
+  - GenericIntString
+  - GenericGenericInt
+  _serializedStateValues:
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAJgBRnVsbEluc3BlY3Rvci5TYW1wbGVzLkJpbmFyeUZvcm1hdHRlclNhbXBsZS5HZW5lcmljSG9sZGVyYDFbW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0BAAAABVZhbHVlAAgCAAAAAQAAAAs=
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAPUBRnVsbEluc3BlY3Rvci5TYW1wbGVzLkJpbmFyeUZvcm1hdHRlclNhbXBsZS5HZW5lcmljSG9sZGVyYDJbW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0CAAAABlZhbHVlMQZWYWx1ZTIAAQgCAAAAAgAAAAYDAAAAAmFiCw==
+  - AAEAAAD/////AQAAAAAAAAAMAgAAAA9Bc3NlbWJseS1DU2hhcnAFAQAAAJ8CRnVsbEluc3BlY3Rvci5TYW1wbGVzLkJpbmFyeUZvcm1hdHRlclNhbXBsZS5HZW5lcmljSG9sZGVyYDFbW0Z1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuR2VuZXJpY0hvbGRlcmAxW1tTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTIuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dLCBBc3NlbWJseS1DU2hhcnAsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsXV0BAAAABVZhbHVlBJgBRnVsbEluc3BlY3Rvci5TYW1wbGVzLkJpbmFyeUZvcm1hdHRlclNhbXBsZS5HZW5lcmljSG9sZGVyYDFbW1N5c3RlbS5JbnQzMiwgbXNjb3JsaWIsIFZlcnNpb249Mi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0CAAAAAgAAAAkDAAAABQMAAACYAUZ1bGxJbnNwZWN0b3IuU2FtcGxlcy5CaW5hcnlGb3JtYXR0ZXJTYW1wbGUuR2VuZXJpY0hvbGRlcmAxW1tTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTIuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dAQAAAAVWYWx1ZQAIAgAAACAAAAAL
+--- !u!4 &1920985726
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1920985724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
