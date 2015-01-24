@@ -4,7 +4,7 @@ using System.Collections;
 public class StupidBot : Bot {
 
     // Use this for initialization
-    public virtual void Start () {
+    public override void Start () {
         base.Start();
     }
     
