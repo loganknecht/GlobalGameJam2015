@@ -36,5 +36,11 @@ public class StupidBot : Bot {
             movementLogic.TriggerJump();
             jumpDetection.Reset();
         }
+
+		if (jumpDetection.detectedSpikes) {
+			jumpDetection.ResetSpikes();
+			rigidBody.velocity = rigidBody.velocity * 0.5f;
+			Debug.Log("spikes zomg");
+		}
     }
 }

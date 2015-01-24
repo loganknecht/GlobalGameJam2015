@@ -4,7 +4,7 @@ using System.Collections;
 public class JumpDetection : MonoBehaviour {
 	public bool detectedJump = true;
 
-	public bool detectedSpikes = true;
+	public bool detectedSpikes = false;
 
 	// Use this for initialization
 	void Start () {
