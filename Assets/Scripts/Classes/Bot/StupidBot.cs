@@ -13,28 +13,28 @@ public class StupidBot : Bot {
         base.Update();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision) {
-    }
-    public void OnCollisionStay2D(Collision2D collision) {
-    }
-    public void OnCollisionExit2D(Collision2D collision) {
-    }
-
     public override void PerformMovementLogic() {
         Vector2 movementStep = movementLogic.CalculateMovementStep();
 
         rigidBody.AddForce(new Vector2(movementStep.x, movementStep.y));
+
+        // resets velocity if not moving left or right so deceleration just a flat stop
         if(!movementLogic.movingLeft
             && !movementLogic.movingRight) {
             rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         }
+    }
 
+    public override void PerformJumpLogic() {
         if(landingDetection.hasLanded) {
+            Debug.Log("Landed!");
             movementLogic.ResetJump();
             landingDetection.Reset();
         }
-    }
 
-    public override void TriggerJump() {
+        if(jumpDetection.detectedJump) {
+            movementLogic.TriggerJump();
+            jumpDetection.Reset();
+        }
     }
 }

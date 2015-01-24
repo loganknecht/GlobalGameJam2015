@@ -20,15 +20,10 @@ public class Movement : MonoBehaviour {
 		PerformDebugKeys();
 	}
 
-	public void ResetJump() {
-		jumpTriggered = false;
-		hasUsedJump = false;
-	}
-
 	public Vector2 GetCurrentVelocity() {
 		Vector2 velocity = Vector2.zero;
 		if(movingLeft || movingRight) {
-			velocity.x += (Input.GetAxis("Horizontal") * xMoveSpeed);
+			velocity.x = (Input.GetAxis("Horizontal") * xMoveSpeed);
 		}
 
 		if(jumpTriggered
@@ -61,7 +56,6 @@ public class Movement : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space)) {
-			// isJumping = true;
 			TriggerJump();
 		}
 	}
@@ -71,5 +65,10 @@ public class Movement : MonoBehaviour {
 			&& !hasUsedJump) {
 			jumpTriggered = true;
 		}
+	}
+	
+	public void ResetJump() {
+		jumpTriggered = false;
+		hasUsedJump = false;
 	}
 }

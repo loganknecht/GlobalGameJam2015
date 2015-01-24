@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class JumpDetection : MonoBehaviour {
-	public bool jumpTriggered = false;
+	public bool detectedJump = true;
 
 	// Use this for initialization
 	void Start () {
@@ -12,7 +12,14 @@ public class JumpDetection : MonoBehaviour {
 	void Update () {
 	}
 
+	public void Reset() {
+		detectedJump = false;
+	}
+
 	public void OnCollisionEnter2D(Collision2D collision) {
+		if(collision.gameObject.GetComponent<JumpTrigger>()) {
+			detectedJump = true;
+		}
 	}
 	public void OnCollisionStay2D(Collision2D collision) {
 	}
