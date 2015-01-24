@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PatternQueue : MonoBehaviour {
+	public GameObject gameObjectToMoveWith;
+
 	float width = 0;
 	float height = 0;
 	float startXPosition = 0;
@@ -34,16 +36,16 @@ public class PatternQueue : MonoBehaviour {
 																									 Camera.main.camera.nearClipPlane));
 
 		width = (cameraBottomRightWorldPosition.x - cameraTopLeftWorldPosition.x);
-		width = width/10; //This divides the actual size into a smaller width so it is a smaller slice of the screen
 		height = (cameraTopLeftWorldPosition.y - cameraBottomRightWorldPosition.y);
 
 		centerX = width/2;
 		// centerY = height/2;
 
-		startXPosition = cameraTopLeftWorldPosition.x;
+		// This sets the start x position for the pattern queue to be offset from the left of the screen, calculating it as a slice of the total width
+		startXPosition = cameraTopLeftWorldPosition.x + (width/8)/2;
 		startYPosition = cameraTopLeftWorldPosition.y;
 
-		Debug.Log("Start X: " + startXPosition + width/2);
+		Debug.Log("Start X: " + startXPosition);
 		Debug.Log("Start Y: " + startYPosition);
 		Debug.Log("Width: " + width);
 		Debug.Log("Height: " + height);
@@ -55,14 +57,29 @@ public class PatternQueue : MonoBehaviour {
 
 	public void AddAtFront(Pattern patternToAdd) {
 		GameObject newPatternQueueObject = PatternFactory.CreatePattern(patternToAdd);
+		float startX = startXPosition;
+
 		newPatternQueueObject.transform.parent = this.gameObject.transform;
-		newPatternQueueObject.transform.position = new Vector3(centerX, 
+		newPatternQueueObject.transform.position = new Vector3(startX, 
 																startYPosition, 
 																newPatternQueueObject.transform.position.z);
+
 		PatternQueueObject patternQueueObjectReference = newPatternQueueObject.GetComponent<PatternQueueObject>();
-		patternQueueObjectReference.GetTargetPathingReference().SetTargetPosition(new Vector3(centerX, 0, 0));
+		patternQueueObjectReference.GetTargetPathingReference().SetTargetPosition(new Vector3(startX, 0, 0));
 	}
 
 	public void AddAtBack(Pattern patternToAdd) {
 	}
 } 
+
+
+
+
+
+
+
+
+
+
+
+

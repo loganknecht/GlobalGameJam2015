@@ -110,7 +110,13 @@ public class TargetPathing : MonoBehaviour {
 
     public virtual void PerformMovementLogic() {
         //This is the logic for the bro moving to their destination
-        Vector2 newPositionOffset = CalculateNextPositionOffset();
+        Vector2 newPositionOffset = Vector2.zero;
+        if(useLocalPosition) {
+            newPositionOffset = CalculateNextLocalPositionOffset();
+        }
+        else {
+            newPositionOffset = CalculateNextWorldPositionOffset();
+        }
         newPositionOffset = (newPositionOffset*Time.deltaTime);
         newPositionOffset = LockNewPositionOffsetToTarget(newPositionOffset);
         if(useLocalPosition) {
@@ -142,7 +148,27 @@ public class TargetPathing : MonoBehaviour {
         }
     }
 
-    public virtual Vector2 CalculateNextPositionOffset() {
+    public virtual Vector2 CalculateNextLocalPositionOffset() {
+        Vector2 newPositionOffset = Vector2.zero;
+
+        if(gameObjectToMove.transform.localPosition.x < targetPosition.x) {
+            newPositionOffset.x += xMoveSpeed;
+        }
+        else if(gameObjectToMove.transform.localPosition.x > targetPosition.x) {
+            newPositionOffset.x -= xMoveSpeed;
+        }
+
+        if(gameObjectToMove.transform.localPosition.y < targetPosition.y) {
+            newPositionOffset.y += yMoveSpeed;
+        }
+        else if(gameObjectToMove.transform.localPosition.y > targetPosition.y) {
+            newPositionOffset.y -= yMoveSpeed;
+        }
+
+        return newPositionOffset;
+    }
+
+    public virtual Vector2 CalculateNextWorldPositionOffset() {
         Vector2 newPositionOffset = Vector2.zero;
 
         if(gameObjectToMove.transform.position.x < targetPosition.x) {
