@@ -11,7 +11,7 @@ public class Bot : MonoBehaviour {
 	public Vector2 maxVelocity = new Vector2(5, 5);
 
 	// Use this for initialization
-	void Start () {
+	public virtual void Start () {
 		if(movementLogic == null) {
 			Debug.LogError("MISSING MOVEMENT LOGIC");
 		}
@@ -21,8 +21,8 @@ public class Bot : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		PerformMovementLogic();
+	public virtual void Update () {
+		PerformLogic();
 	}
 
 	public void OnCollisionEnter2D() {
@@ -32,34 +32,13 @@ public class Bot : MonoBehaviour {
 	public void OnCollisionExit2D() {
 	}
 
-	public void PerformMovementLogic() {
-		Vector2 movementStep = movementLogic.CalculateMovementStep();
-		// movementStep *= Time.deltaTime;
-		// this.gameObject.transform.position += new Vector3(movementStep.x,
-		// 												  movementStep.y,
-		// 												  0);
-		// this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x + movementStep.x, 
-		// 												 this.gameObject.transform.position.y,
-		// 												 // this.gameObject.transform.position.y + movementStep.y,
-		// 												 this.gameObject.transform.position.z);
-
-		rigidBody.AddForce(new Vector2(movementStep.x, movementStep.y));
-		if(!movementLogic.movingLeft
-			&& !movementLogic.movingRight) {
-			// rigidBody.velocity.x = 0;
-			rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-		}
-		// rigidBody.AddForce(new Vector3(movementStep.x, movementStep.y, 0));
-		// rigidBody.velocity = new Vector3(Mathf.Clamp(rigidBody.velocity.x, -maxVelocity.x, maxVelocity.x),
-		// 								 Mathf.Clamp(rigidBody.velocity.y, -maxVelocity.y, maxVelocity.y),
-		// 								 0);
-
-		if(landingDetection.hasLanded) {
-			movementLogic.ResetJump();
-			landingDetection.Reset();
-		}
+	public virtual void PerformLogic() {
+		PerformMovementLogic();
 	}
 
-	public void Jump() {
+	public virtual void PerformMovementLogic() {
+	}
+
+	public virtual void TriggerJump() {
 	}
 }
