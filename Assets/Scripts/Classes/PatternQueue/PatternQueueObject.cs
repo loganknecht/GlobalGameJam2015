@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PatternQueueObject : MonoBehaviour {
     TargetPathing targetPathing;
-    List<Pattern> patterns;
+    public List<Pattern> patterns;
 
     public void Awake() {
         patterns = new List<Pattern>();
@@ -14,6 +14,10 @@ public class PatternQueueObject : MonoBehaviour {
     }
 
     public void Update() {
+    }
+
+    public TargetPathing GetTargetPathingReference() {
+        return targetPathing;
     }
 
     public void PerformMovementLogic() {
