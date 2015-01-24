@@ -16,6 +16,7 @@ public class TargetPathing : MonoBehaviour {
     public float targetPositionXLockBuffer = 0.05f;
     public float targetPositionYLockBuffer = 0.05f;
 
+    public bool useLocalPosition = false;
     public bool isPaused = false;
     public bool disableMovementLogic = false;
 
@@ -112,7 +113,12 @@ public class TargetPathing : MonoBehaviour {
         Vector2 newPositionOffset = CalculateNextPositionOffset();
         newPositionOffset = (newPositionOffset*Time.deltaTime);
         newPositionOffset = LockNewPositionOffsetToTarget(newPositionOffset);
-        transform.position += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
+        if(useLocalPosition) {
+            transform.localPosition += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
+        }
+        else {
+            transform.position += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
+        }
 
         //performs check to pop new node from the movemeNodes list
         if(IsAtMovementNodePosition()) {

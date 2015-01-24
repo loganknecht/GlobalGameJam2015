@@ -27,7 +27,7 @@ public class StupidBot : Bot {
 
     public override void PerformJumpLogic() {
         if(landingDetection.hasLanded) {
-            Debug.Log("Landed!");
+            // Debug.Log("Landed!");
             movementLogic.ResetJump();
             landingDetection.Reset();
         }

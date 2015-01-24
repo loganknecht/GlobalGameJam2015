@@ -17,7 +17,7 @@ public class LandingDetection : MonoBehaviour {
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log(collision.gameObject.name);
+		// Debug.Log(collision.gameObject.name);
 		if(!collision.gameObject.GetComponent<JumpTrigger>()) {
 			hasLanded = true;
 		}
