@@ -33,7 +33,7 @@ public class StupidBot : Bot {
             && !movementLogic.movingRight) {
             rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         }
-        
+
         rigidBody.AddForce(new Vector2(movementStep.x, movementStep.y));
 
     }
@@ -46,14 +46,16 @@ public class StupidBot : Bot {
         }
 
         if(jumpDetection.detectedJump) {
+            var obj = SoundManager.Instance.Play(Random.Range(0, 100) > 50 ? AudioType.Jump2 : AudioType.Jump1);
+            Debug.Log("playing sound " + obj);
             movementLogic.TriggerJump();
             jumpDetection.Reset();
         }
 
-		if (jumpDetection.detectedSpikes) {
-			jumpDetection.ResetSpikes();
-			rigidBody.velocity = rigidBody.velocity * 0.5f;
-			Debug.Log("spikes zomg");
-		}
+        if (jumpDetection.detectedSpikes) {
+          jumpDetection.ResetSpikes();
+          rigidBody.velocity = rigidBody.velocity * 0.5f;
+          Debug.Log("spikes zomg");
+        }
     }
 }

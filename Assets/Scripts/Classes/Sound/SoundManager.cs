@@ -113,27 +113,9 @@ public class SoundManager : MonoBehaviour {
   public void ConfigureSoundDictionary() {
     soundDictionary[AudioType.None] = "path/to/file/from/root level";
 
-    soundDictionary[AudioType.CosmicSpaceHeadSurfing] = "Sound/Music/Random/Cosmic Spacehead OST - Surfing";
+	soundDictionary [AudioType.Jump1] = "Sound/jump1";
+	soundDictionary [AudioType.Jump2] = "Sound/jump2";
 
-    soundDictionary[AudioType.EntranceQueueDoorOpenClubMusic] = "Sound/Effects/Bathroom/EntranceQueue/DoorOpenClubMusic";
-
-    soundDictionary[AudioType.Fart1] = "Sound/Effects/Bathroom/Farts/135716__robmoth__fart";
-    soundDictionary[AudioType.Fart2] = "Sound/Effects/Bathroom/Farts/241000__dsisstudios__short-fart-01";
-    soundDictionary[AudioType.Fart3] = "Sound/Effects/Bathroom/Farts/241001__dsisstudios__medium-fart-02";
-    soundDictionary[AudioType.Fart4] = "Sound/Effects/Bathroom/Farts/241002__dsisstudios__medium-fart-01";
-    soundDictionary[AudioType.Fart5] = "Sound/Effects/Bathroom/Farts/242750__dsisstudios__medium-fart-03";
-
-    soundDictionary[AudioType.Flush1] = "Sound/Effects/Bathroom/ToiletFlushes/185046__justeluis__flush";
-    soundDictionary[AudioType.Flush2] = "Sound/Effects/Bathroom/ToiletFlushes/185046__justeluis__flush";
-
-    soundDictionary[AudioType.GreenDogPedalCopter] = "Sound/Music/Random/Greendog (MD) - Pedal-copter";
-    soundDictionary[AudioType.GreendogIntroAztecTemples] = "Sound/Music/Random/Greendog (MD) - Intro_Aztec_Temples";
-
-    soundDictionary[AudioType.Peeing1] = "Sound/Effects/Bathroom/Peeing/232539__arnaump__male-peeing";
-
-    soundDictionary[AudioType.Pooping1] = "Sound/Effects/Bathroom/Pooping/134708__anovosel__max-s-poop";
-
-    soundDictionary[AudioType.TextboxNextButtonPressBeep] = "Sound/Effects/Beep/124900__greencouch__beeps-18";
   }
 
   public GameObject Play(AudioType audioToPlay, bool loop = false, float delay = 0) {
