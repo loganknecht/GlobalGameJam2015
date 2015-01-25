@@ -314,7 +314,7 @@ public static class MapGeneratorEngine {
     for (int i = 0; i < META_TILE_WIDTH; i++) {
       if (i > 1 && i < META_TILE_WIDTH - 2) {
         metaTileA.createTile(i, halfHeight, GeneratedTileType.PATTERN);
-        if (i == META_TILE_WIDTH - 1) {
+        if (i == META_TILE_WIDTH - 3) {
           metaTileA.getTile(i, halfHeight).hasJumpTrigger = true;
         }
       }
@@ -351,12 +351,12 @@ public static class MapGeneratorEngine {
       } else if (i >= 4 && i < 6)  {
         metaTileE.createTile(i, 2, GeneratedTileType.PATTERN);
         if (i == 5) {
-          metaTileE.getTile(i, 1).hasJumpTrigger = true;
+          metaTileE.getTile(i, 2).hasJumpTrigger = true;
         }
       } else if (i >= 7 && i < 9)  {
         metaTileE.createTile(i, 3, GeneratedTileType.PATTERN);
         if (i == 8) {
-          metaTileE.getTile(i, 1).hasJumpTrigger = true;
+          metaTileE.getTile(i, 3).hasJumpTrigger = true;
         }
       }
     }
