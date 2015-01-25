@@ -10,6 +10,7 @@ public class Bot : MonoBehaviour {
 	public JumpDetection jumpDetection;
 	public LandingDetection landingDetection;
 	public Vector2 maxVelocity = new Vector2(10, 10);
+    public bool continuouslyMoveRight = false;
 
 	// Use this for initialization
 	public virtual void Start () {
