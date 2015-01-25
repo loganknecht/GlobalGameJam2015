@@ -8,6 +8,7 @@ public class TileMapManager : MonoBehaviour {
     //BEGINNING OF SINGLETON CODE CONFIGURATION
     private static volatile TileMapManager _instance;
     private static object _lock = new object();
+    public TileMap tileMap; 
 
     //Stops the lock being created ahead of time if it's not necessary
     static TileMapManager() {
@@ -39,5 +40,11 @@ public class TileMapManager : MonoBehaviour {
     }
 
     public void Update() {
+    }
+
+    public TileMap GenerateTileMap(Tile[][] newTileMap) {
+        GameObject tileMap = new GameObject();
+        tileMap.AddComponent<TileMap>();
+        return null;
     }
 }
