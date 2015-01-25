@@ -42,12 +42,12 @@ public class LevelManager : MonoBehaviour {
 
     // TEST CODE
     MapGenerationParams args = new MapGenerationParams(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
-    MetaTile[,] tiles = MapGeneratorEngine.generateMap(args);
+    GeneratedTile[][] tiles = MapGeneratorEngine.generateMap(args);
 
     Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
 
     // lol TODO: make it work
-    TileMapManager.Instance.GenerateTileMap(null);
+    // TileMapManager.Instance.GenerateTileMap(null);
   }
 
   public void Update() {

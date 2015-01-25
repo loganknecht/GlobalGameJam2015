@@ -376,7 +376,28 @@ public static class MapGeneratorEngine {
     }
   }
 
-  public static MetaTile[,] generateMap (MapGenerationParams args) {
+  public static GeneratedTile[][] flattenMetaTiles(MetaTile[,] metaTiles) {
+    int tilesWide = metaTiles.GetLength(0) * metaTiles[0,0].getColumnCount();
+    int tilesHigh = metaTiles.GetLength(1) * metaTiles[0,0].getRowCount();
+    int metaTilesWide = metaTiles[0,0].getColumnCount();
+    int metaTilesHigh = metaTiles[0,0].getRowCount();
+    GeneratedTile[][] flattened = new GeneratedTile[tilesWide][];
+
+    for (int tCol = 0; tCol < tilesWide; tCol++) {
+      flattened[tCol] = new GeneratedTile[tilesHigh];
+      int mCol = (int)(tCol / metaTilesWide);
+      int mtCol = tCol % metaTilesWide;
+      for (int tRow = 0; tRow < tilesHigh; tRow++) {
+        int mRow = (int)(tRow / metaTilesHigh);
+        int mtRow = tRow % metaTilesHigh;
+        flattened[tCol][tRow] = metaTiles[mCol, mRow].getTile(mtCol, mtRow);
+      }
+    }
+
+    return flattened;
+  }
+
+  public static MetaTile[,] generateMetaTileMap (MapGenerationParams args) {
     int seed = args.seed;
     int metaTilesWide = args.metaTilesWide;
     int metaTilesHigh = args.metaTilesHigh;
@@ -411,6 +432,11 @@ public static class MapGeneratorEngine {
     return tiles;
   }
 
+  public static GeneratedTile[][] generateMap(MapGenerationParams args) {
+    MetaTile[,] metaTiles = generateMetaTileMap(args);
+    return flattenMetaTiles(metaTiles);
+  }
+
   public static string getStringRepresentation(MetaTile[,] tiles) {
     string str = "";
     for (int row = 0; row < tiles.GetLength(1); row++) {
@@ -424,6 +450,18 @@ public static class MapGeneratorEngine {
         }
         str += "\n";
       }
+    }
+    return str;
+  }
+
+  public static string getStringRepresentation(GeneratedTile[][] tiles) {
+    string str = "";
+    for (int row = 0; row < tiles[0].Length; row++) {
+      for (int col = 0; col < tiles.Length; col++) {
+        GeneratedTile tile = tiles[col][row];
+        str += tile;
+      }
+      str += "\n";
     }
     return str;
   }
