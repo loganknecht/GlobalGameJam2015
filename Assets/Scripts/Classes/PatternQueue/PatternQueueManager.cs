@@ -41,8 +41,6 @@ public class PatternQueueManager : MonoBehaviour {
     //END OF SINGLETON CODE CONFIGURATION
 
     public void Start() {
-        PerformPatternAdd();
-        Debug.Log(GetPatternQueue().ContainsPattern(Pattern.Block));
     }
 
     public void Update() {
