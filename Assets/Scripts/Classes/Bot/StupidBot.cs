@@ -40,6 +40,13 @@ public class StupidBot : Bot {
 
         rigidBody.AddForce(new Vector2(movementStep.x, movementStep.y));
 
+        if(rigidBody.velocity.x > maxVelocity.x) {
+            rigidBody.velocity = new Vector2(maxVelocity.x, rigidBody.velocity.y);
+        }
+        if(rigidBody.velocity.y > maxVelocity.y) {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, maxVelocity.y);
+        }
+
     }
 
     public override void PerformJumpLogic() {

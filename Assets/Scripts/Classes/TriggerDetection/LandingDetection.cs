@@ -16,14 +16,14 @@ public class LandingDetection : MonoBehaviour {
 		hasLanded = false;
 	}
 
-	public void OnCollisionEnter2D(Collision2D collision) {
-		// Debug.Log(collision.gameObject.name);
-		if(!collision.gameObject.GetComponent<JumpTrigger>()) {
+	public void OnTriggerEnter2D(Collider2D collider) {
+		// Debug.Log(collider.gameObject.name);
+		if(!collider.gameObject.GetComponent<JumpTrigger>()) {
 			hasLanded = true;
 		}
 	}
-	public void OnCollisionStay2D(Collision2D collision) {
+	public void OnTriggerStay2D(Collider2D collider) {
 	}
-	public void OnCollisionExit2D(Collision2D collision) {
+	public void OnTriggerExit2D(Collider2D collider) {
 	}
 }

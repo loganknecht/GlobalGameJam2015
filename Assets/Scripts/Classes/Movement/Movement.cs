@@ -25,7 +25,12 @@ public class Movement : MonoBehaviour {
 
 	public Vector2 GetCurrentVelocity() {
 		Vector2 velocity = Vector2.zero;
-		if(movingLeft || movingRight) {
+
+		if(movingLeft) {
+			// velocity.x = (Input.GetAxis("Horizontal") * xMoveSpeed);
+			velocity.x = (-1 * xMoveSpeed);
+		}
+		if(movingRight) {
 			// velocity.x = (Input.GetAxis("Horizontal") * xMoveSpeed);
 			velocity.x = (1 * xMoveSpeed);
 		}
