@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour {
 
     // Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
     // lol TODO: make it work
-    TileMapManager.Instance.tiles = TileMapManager.Instance.GenerateTileMap(tiles);
+    TileMapManager.Instance.GenerateTileMap(tiles);
     // winCollider.transform.position = new Vector3(0, TileMapManager.Instance.tiles[0][0].transform.position.y - 1, winCollider.transform.position.z);
     // failCollider.transform.position = new Vector3(0, TileMapManager.Instance.tiles[0][0].transform.position.y - 1, winCollider.transform.position.z);
 

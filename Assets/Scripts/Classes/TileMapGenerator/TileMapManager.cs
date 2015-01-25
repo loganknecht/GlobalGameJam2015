@@ -1,10 +1,8 @@
-﻿using FullInspector;
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TileMapManager : BaseBehavior {
+public class TileMapManager : MonoBehaviour {
 
     //Probably doesn't need to be a singleton
     //BEGINNING OF SINGLETON CODE CONFIGURATION
@@ -44,7 +42,7 @@ public class TileMapManager : BaseBehavior {
     public void Update() {
     }
 
-    public Tile[][] GenerateTileMap(GeneratedTile[][] newTileMap) {
+    public void GenerateTileMap(GeneratedTile[][] newTileMap) {
         GameObject tileMap = new GameObject();
         tileMap.AddComponent<TileMap>();
 
@@ -62,9 +60,14 @@ public class TileMapManager : BaseBehavior {
 
                 newTileGameObject.transform.position = new Vector3(col, row, newTileGameObject.transform.position.z);
                 newTileGameObject.transform.parent = this.gameObject.transform;
+
+                if (genTile.hasJumpTrigger) {
+                    GameObject jumpTrigger = PatternFactory.CreateJumpTrigger();
+                    jumpTrigger.transform.position = new Vector3(col + 0.5f, row + 0.5f, jumpTrigger.transform.position.z);
+                }
             }
         }
 
-        return newTiles;
+        tiles = newTiles;
     }
 }

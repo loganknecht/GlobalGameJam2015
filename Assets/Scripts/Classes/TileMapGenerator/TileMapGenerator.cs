@@ -18,6 +18,7 @@ public enum GeneratedTileType {
 public class GeneratedTile {
   public GeneratedTileType type;
   public Vector2 worldCoord;
+  public bool hasJumpTrigger;
 
   public GeneratedTile() {
     type = GeneratedTileType.NONE;
@@ -39,7 +40,11 @@ public class GeneratedTile {
       case GeneratedTileType.NONE:
         return "0";
       case GeneratedTileType.PATTERN:
-        return "P";
+        if (hasJumpTrigger) {
+          return "J";
+        } else {
+          return "P";
+        }
       default:
         return "X";
     }
@@ -62,6 +67,9 @@ public class MetaTilePlacementRule {
   }
 
   public bool isValidNeighbor(int metaTileId) {
+    // if (!allValid && metaTileId == 0) {
+      // Debug.Log(" : " + validNeighbors.IndexOf(metaTileId));
+    // }
     return allValid || validNeighbors.IndexOf(metaTileId) != -1;
   }
 
@@ -301,29 +309,68 @@ public static class MapGeneratorEngine {
     MetaTile metaTileB = new MetaTile(META_TILE_WIDTH, META_TILE_HEIGHT);
     MetaTile metaTileC = new MetaTile(META_TILE_WIDTH, META_TILE_HEIGHT);
     MetaTile metaTileD = new MetaTile(META_TILE_WIDTH, META_TILE_HEIGHT);
+
+    MetaTile metaTileE = new MetaTile(META_TILE_WIDTH, META_TILE_HEIGHT);
     for (int i = 0; i < META_TILE_WIDTH; i++) {
-      metaTileA.createTile(i, halfHeight, GeneratedTileType.PATTERN);
+      if (i > 1 && i < META_TILE_WIDTH - 2) {
+        metaTileA.createTile(i, halfHeight, GeneratedTileType.PATTERN);
+        if (i == META_TILE_WIDTH - 1) {
+          metaTileA.getTile(i, halfHeight).hasJumpTrigger = true;
+        }
+      }
 
       int heightB;
       int heightC;
       if (i < halfHeight) {
-        heightB = qtrHeight;
-        heightC = threeQtrHeight;
+        heightB = qtrHeight + 1;
+        heightC = threeQtrHeight - 1;
       } else {
-        heightB = threeQtrHeight;
-        heightC = qtrHeight;
+        heightB = threeQtrHeight - 1;
+        heightC = qtrHeight + 1;
       }
       metaTileB.createTile(i, heightB, GeneratedTileType.PATTERN);
       metaTileC.createTile(i, heightC, GeneratedTileType.PATTERN);
 
+      if (i == halfHeight - 1 || i == META_TILE_WIDTH - 1) {
+        metaTileB.getTile(i, heightB).hasJumpTrigger = true;
+        metaTileC.getTile(i, heightC).hasJumpTrigger = true;
+      }
+
       if (i < qtrWidth + 1 || i > threeQtrWidth - 1) {
         metaTileD.createTile(i, halfHeight, GeneratedTileType.PATTERN);
       }
+      if (i == qtrWidth || i == META_TILE_WIDTH - 1) {
+        metaTileD.getTile(i, halfHeight).hasJumpTrigger = true;
+      }
+
+      if (i > 0 && i < 3) {
+        metaTileE.createTile(i, 1, GeneratedTileType.PATTERN);
+        if (i == 2) {
+          metaTileE.getTile(i, 1).hasJumpTrigger = true;
+        }
+      } else if (i >= 4 && i < 6)  {
+        metaTileE.createTile(i, 2, GeneratedTileType.PATTERN);
+        if (i == 5) {
+          metaTileE.getTile(i, 1).hasJumpTrigger = true;
+        }
+      } else if (i >= 7 && i < 9)  {
+        metaTileE.createTile(i, 3, GeneratedTileType.PATTERN);
+        if (i == 8) {
+          metaTileE.getTile(i, 1).hasJumpTrigger = true;
+        }
+      }
     }
+
+    // metaTileD.AddValidNeighborLeft(1, false);
+    // metaTileD.AddValidNeighborLeft(2, false);
+    // metaTileD.AddValidNeighborLeft(3, false);
+
     metaTiles.Add(metaTileA);
     metaTiles.Add(metaTileB);
     metaTiles.Add(metaTileC);
     metaTiles.Add(metaTileD);
+
+    metaTiles.Add(metaTileE);
 
     return metaTiles.ToArray();
   }
@@ -421,6 +468,7 @@ public static class MapGeneratorEngine {
           top = tiles[col, row - 1];
         }
         tilePool = getValidMetaTilePool(availableTiles, left, topLeft, top, null, null, null, null, null);
+        // Debug.Log("- " + tilePool.Length);
 
         int index = rando.Next(tilePool.Length);
         tiles[col, row] = tilePool[index];

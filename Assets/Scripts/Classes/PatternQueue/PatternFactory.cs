@@ -19,4 +19,10 @@ public static class PatternFactory {
         gameObjectToCreate = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Tiles/RunnerTile") as GameObject);
         return gameObjectToCreate;
     }
+
+    public static GameObject CreateJumpTrigger() {
+        GameObject gameObjectToCreate = null;
+        gameObjectToCreate = (GameObject)GameObject.Instantiate(Resources.Load("Prefabs/Tiles/JumpTrigger") as GameObject);
+        return gameObjectToCreate;
+    }
 }
