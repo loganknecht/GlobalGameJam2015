@@ -78,7 +78,7 @@ public class TargetPathing : MonoBehaviour {
         return targetPosition;
     }
 
-    public void SetOnArrivalAtMovementNodeLogic(OnArrival newOnArrival) {
+    public void SetOnArrivalLogic(OnArrival newOnArrival) {
         onArrival = new OnArrival(newOnArrival);
     }
 

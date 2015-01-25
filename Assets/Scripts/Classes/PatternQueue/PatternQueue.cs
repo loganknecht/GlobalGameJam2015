@@ -16,8 +16,6 @@ public class PatternQueue : MonoBehaviour {
 	float height = 0;
 	float startXPosition = 0;
 	float startYPosition = 0;
-	float centerX = 0;
-	// float centerY = 0;
 	public int numberOfPatternsToDisplay = 1;
 
 	public List<PatternQueueObject> patternQueueObjects;
@@ -46,9 +44,6 @@ public class PatternQueue : MonoBehaviour {
 		width = (cameraTopRightWorldPosition.x - cameraBottomLeftWorldPosition.x);
 		height = (cameraTopRightWorldPosition.y - cameraBottomLeftWorldPosition.y);
 
-		centerX = width/2;
-		// centerY = height/2;
-
 		// This sets the start x position for the pattern queue to be offset from the left of the screen, calculating it as a slice of the total width
 		float leftBound = 0 - width/2;
 		float topBound = 0 + height/2;
@@ -61,11 +56,18 @@ public class PatternQueue : MonoBehaviour {
 		// Debug.Log("Height: " + height);
 	}
 
+	public bool ContainsPattern(Pattern typeToCheck) {
+		foreach(PatternQueueObject patternQueueObject in patternQueueObjects) {
+			foreach(Pattern pattern in patternQueueObject.patterns) {
+				if(pattern == typeToCheck) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	public void AddPattern(Pattern patternToAdd) {
-		CalculatePatternQueueLayout();
-		//----------------------------------------------------------------------------------
-		// This BADLY needs to be fixed, but for game jam status we're moving on
-		//----------------------------------------------------------------------------------
 		CalculatePatternQueueLayout();
 
 		GameObject newPatternQueueObject = PatternFactory.CreatePattern(patternToAdd);
@@ -75,9 +77,14 @@ public class PatternQueue : MonoBehaviour {
 																	newPatternQueueObject.transform.position.z);
 
 		patternQueueObjects.Add(newPatternQueueObject.GetComponent<PatternQueueObject>());
-		Debug.Log(patternQueueObjects.Count);
 
-		float borderBuffer = 0f;
+		CalculateNewLayout();
+	}
+
+	public void CalculateNewLayout() {
+		//----------------------------------------------------------------------------------
+		// This BADLY needs to be fixed, but for game jam status we're moving on
+		//----------------------------------------------------------------------------------
 		float objectHeight = 1.5f;
 		float yPositionIncrement = height/patternQueueObjects.Count;
 		float topBound = 0 + height/2;
@@ -90,7 +97,6 @@ public class PatternQueue : MonoBehaviour {
 																						 currentPatternQueueObject.transform.position.z));
 			yPosition -= yPositionIncrement;
 		}
-		//----------------------------------------------------------------------------------
 	}
 } 
 

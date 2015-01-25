@@ -1,15 +1,20 @@
+using FullInspector;
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PatternQueueObject : MonoBehaviour {
+public class PatternQueueObject : BaseBehavior {
     public TargetPathing targetPathing;
     public List<Pattern> patterns;
     public float timer = 0f;
+    public float timerMax = 5f;
     public bool isPaused = false;
 
-    public void Awake() {
-        patterns = new List<Pattern>();
+    protected override void Awake() {
+        if(patterns == null) {
+            patterns = new List<Pattern>();
+        }
     }
 
     public void Start() {
@@ -17,6 +22,16 @@ public class PatternQueueObject : MonoBehaviour {
 
     public void Update() {
         timer += Time.deltaTime;
+    }
+
+    public bool HasExpired() {
+        if(timer > timerMax) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
 
     public TargetPathing GetTargetPathingReference() {
@@ -31,5 +46,9 @@ public class PatternQueueObject : MonoBehaviour {
         foreach(Pattern pattern in patternsToSet) {
             patterns.Add(pattern);
         }
+    }
+
+    public void DestroyOnArrival() {
+        Destroy(this.gameObject);
     }
 } 

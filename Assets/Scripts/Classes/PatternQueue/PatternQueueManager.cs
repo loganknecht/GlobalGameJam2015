@@ -9,6 +9,10 @@ public class PatternQueueManager : MonoBehaviour {
 	private static volatile PatternQueueManager _instance;
 	private static object _lock = new object();
 	public PatternQueue patternQueue;
+	public float generationDelay = 0f;
+	public float generationDelayMax = 3f;
+	public float minGenerationDelay = 1f;
+	public float maxGenerationDelay = 3f;
 
 	//Stops the lock being created ahead of time if it's not necessary
 	static PatternQueueManager() {
@@ -37,10 +41,13 @@ public class PatternQueueManager : MonoBehaviour {
 	//END OF SINGLETON CODE CONFIGURATION
 
 	public void Start() {
+		PerformPatternAdd();
+		Debug.Log(GetPatternQueue().ContainsPattern(Pattern.Block));
 	}
 
 	public void Update() {
 		PerformDebugKeys();
+		PerformGenerationDelayLogic();
 	}
 
 	public void PerformDebugKeys() {
@@ -50,7 +57,48 @@ public class PatternQueueManager : MonoBehaviour {
 		}
 	}
 
+	public void PerformGenerationDelayLogic() {
+		generationDelay += Time.deltaTime;
+		CheckToGenerateNewPattern();
+		CheckForExpiredPatternQueuObjects();
+	}
+
+	public void ResetGenerationDelay() {
+		generationDelay = 0f;
+		generationDelayMax = Random.Range(minGenerationDelay, maxGenerationDelay);
+	}
+
 	public PatternQueue GetPatternQueue() {
 		return patternQueue;
+	}
+
+	public void PerformPatternAdd() {
+		PatternQueue patternQueue = GetPatternQueue();
+		if(patternQueue.patternQueueObjects.Count < patternQueue.numberOfPatternsToDisplay) {
+			patternQueue.AddPattern(Pattern.Block);
+		}
+	}
+
+	public void CheckToGenerateNewPattern() {
+		if(generationDelay > generationDelayMax) {
+			PerformPatternAdd();
+			ResetGenerationDelay();
+		}
+	}
+
+	public void CheckForExpiredPatternQueuObjects() {
+		List<PatternQueueObject> patternQueueObjectToRemove = new List<PatternQueueObject>();
+		foreach(PatternQueueObject patternQueueObject in GetPatternQueue().patternQueueObjects) {
+			if(patternQueueObject.HasExpired()) {
+				patternQueueObject.GetTargetPathingReference().SetTargetPosition(new Vector3(patternQueueObject.transform.position.x, 
+																							 -50,
+																							 patternQueueObject.transform.position.z));
+				patternQueueObjectToRemove.Add(patternQueueObject);
+			}
+		}
+		foreach(PatternQueueObject patternQueueObject in patternQueueObjectToRemove) {
+			GetPatternQueue().patternQueueObjects.Remove(patternQueueObject);
+			patternQueueObject.GetTargetPathingReference().SetOnArrivalLogic(patternQueueObject.DestroyOnArrival);
+		}
 	}
 }
