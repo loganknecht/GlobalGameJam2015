@@ -59,6 +59,7 @@ public class TileMapManager : MonoBehaviour {
                 }
 
                 newTileGameObject.transform.position = new Vector3(col, row, newTileGameObject.transform.position.z);
+                newTileGameObject.transform.parent = this.gameObject.transform;
 
                 if (genTile.hasJumpTrigger) {
                     GameObject jumpTrigger = PatternFactory.CreateJumpTrigger();
