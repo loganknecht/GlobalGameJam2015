@@ -2,8 +2,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// WARNING! WARNING! WARNING!
+/// This code makes an assumption that it is a childe object of another component,
+/// and with this assumption it configures its position with respect to its local world coordinates
+/// Because of this when calculating from TOP to BOTTOM the center between those points is 0
+/// This means that the top border is always calculated by 0 + height/2, and the bottom
+/// is calculated by 0 - height/2. The same goes for width
+/// </summary>
 public class PatternQueue : MonoBehaviour {
-	public GameObject gameObjectToMoveWith;
 
 	float width = 0;
 	float height = 0;
@@ -19,11 +26,12 @@ public class PatternQueue : MonoBehaviour {
 	}
 
 	public void Start() {
+		patternQueueObjects = new List<PatternQueueObject>();
+
 		CalculatePatternQueueLayout();
 	}
 
 	public void Update() {
-		CalculatePatternQueueLayout();
 	}
 
 	public void CalculatePatternQueueLayout() {
@@ -47,34 +55,42 @@ public class PatternQueue : MonoBehaviour {
 		startXPosition = leftBound + (width/8)/2;
 		startYPosition = topBound;
 
-		Debug.Log("Start X: " + startXPosition);
-		Debug.Log("Start Y: " + startYPosition);
-		Debug.Log("Width: " + width);
-		Debug.Log("Height: " + height);
-
-		patternQueueObjects = new List<PatternQueueObject>();
+		// Debug.Log("Start X: " + startXPosition);
+		// Debug.Log("Start Y: " + startYPosition);
+		// Debug.Log("Width: " + width);
+		// Debug.Log("Height: " + height);
 	}
 
 	public void AddPattern(Pattern patternToAdd) {
+		CalculatePatternQueueLayout();
+		//----------------------------------------------------------------------------------
+		// This BADLY needs to be fixed, but for game jam status we're moving on
+		//----------------------------------------------------------------------------------
+		CalculatePatternQueueLayout();
+
 		GameObject newPatternQueueObject = PatternFactory.CreatePattern(patternToAdd);
-		// patternQueueObjects.Add(newPatternQueueObject);
+		newPatternQueueObject.transform.parent = this.gameObject.transform;
+		newPatternQueueObject.transform.localPosition = new Vector3(startXPosition, 
+																	startYPosition, 
+																	newPatternQueueObject.transform.position.z);
 
-		float borderBuffer = 10;
-		float startLayerY = startYPosition + borderBuffer;
-		// float yPositionIncrement = height/numberOfPatternsToDisplay
+		patternQueueObjects.Add(newPatternQueueObject.GetComponent<PatternQueueObject>());
+		Debug.Log(patternQueueObjects.Count);
 
-		// foreach(PatternQueueObject patternQueueObject in patternQueueObjects) {
-		// }
+		float borderBuffer = 0f;
+		float objectHeight = 1.5f;
+		float yPositionIncrement = height/patternQueueObjects.Count;
+		float topBound = 0 + height/2;
+		float yPosition = topBound - objectHeight;
 
-		// GameObject newPatternQueueObject = PatternFactory.CreatePattern(patternToAdd);
-
-		// newPatternQueueObject.transform.parent = this.gameObject.transform;
-		// newPatternQueueObject.transform.localPosition = new Vector3(startXPosition, 
-		// 															startYPosition, 
-		// 															newPatternQueueObject.transform.position.z);
-
-		// PatternQueueObject patternQueueObjectReference = newPatternQueueObject.GetComponent<PatternQueueObject>();
-		// patternQueueObjectReference.GetTargetPathingReference().SetTargetPosition(new Vector3(startXPosition, 0, 0));
+		for(int i = patternQueueObjects.Count - 1; i >= 0; i--) {
+			PatternQueueObject currentPatternQueueObject = patternQueueObjects[i];
+			currentPatternQueueObject.GetTargetPathingReference().SetTargetPosition(new Vector3(startXPosition, 
+																						 yPosition,
+																						 currentPatternQueueObject.transform.position.z));
+			yPosition -= yPositionIncrement;
+		}
+		//----------------------------------------------------------------------------------
 	}
 } 
 

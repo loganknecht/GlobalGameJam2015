@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class PatternQueueObject : MonoBehaviour {
     public TargetPathing targetPathing;
     public List<Pattern> patterns;
+    public float timer = 0f;
+    public bool isPaused = false;
 
     public void Awake() {
         patterns = new List<Pattern>();
@@ -14,6 +16,7 @@ public class PatternQueueObject : MonoBehaviour {
     }
 
     public void Update() {
+        timer += Time.deltaTime;
     }
 
     public TargetPathing GetTargetPathingReference() {
