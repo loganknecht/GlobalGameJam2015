@@ -9,6 +9,9 @@ public class LevelManager : MonoBehaviour {
   private static volatile LevelManager _instance;
   private static object _lock = new object();
 
+  public GameObject levelFailedPanel;
+  public GameObject levelWonPanel;
+
   //Stops the lock being created ahead of time if it's not necessary
   static LevelManager() {
   }
@@ -39,9 +42,29 @@ public class LevelManager : MonoBehaviour {
 
     // TEST CODE
     MetaTile[,] tiles = MapGeneratorEngine.generateMap(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
+    // TileMapManager.Instance.SetTileMap();
     Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
+
+    // lol TODO: make it work
+    TileMapManager.Instance.GenerateTileMap(null);
   }
 
   public void Update() {
+  }
+
+  public void ChangeSceneToMainMenu() {
+    Application.LoadLevel("MainMenu");
+  }
+
+  public void ChangeSceneToLevelOne() {
+    Application.LoadLevel("LevelOne");
+  }
+
+  public void TriggerLevelFailedPanel() {
+    levelFailedPanel.GetComponent<UIPanel>().alpha = 1;
+  }
+
+  public void TriggerLevelWonPanel() {
+    levelWonPanel.GetComponent<UIPanel>().alpha = 1;
   }
 }
