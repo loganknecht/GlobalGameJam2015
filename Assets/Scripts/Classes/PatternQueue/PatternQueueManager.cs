@@ -46,7 +46,7 @@ public class PatternQueueManager : MonoBehaviour {
 	public void PerformDebugKeys() {
 		if(Input.GetKeyDown(KeyCode.G)) {
 			Debug.Log("Generating Pattern In Queue");
-			GetPatternQueue().AddAtFront(Pattern.Block);
+			GetPatternQueue().AddPattern(Pattern.Block);
 		}
 	}
 

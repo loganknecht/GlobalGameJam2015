@@ -11,8 +11,7 @@ public class PatternQueue : MonoBehaviour {
 	float startYPosition = 0;
 	float centerX = 0;
 	// float centerY = 0;
-	int numberOfPatternsToDisplay = 0;
-	float patternSpacing = 0;
+	public int numberOfPatternsToDisplay = 1;
 
 	public List<PatternQueueObject> patternQueueObjects;
 
@@ -53,24 +52,29 @@ public class PatternQueue : MonoBehaviour {
 		Debug.Log("Width: " + width);
 		Debug.Log("Height: " + height);
 
-		patternSpacing = height/numberOfPatternsToDisplay;
-
 		patternQueueObjects = new List<PatternQueueObject>();
 	}
 
-	public void AddAtFront(Pattern patternToAdd) {
+	public void AddPattern(Pattern patternToAdd) {
 		GameObject newPatternQueueObject = PatternFactory.CreatePattern(patternToAdd);
+		// patternQueueObjects.Add(newPatternQueueObject);
 
-		newPatternQueueObject.transform.parent = this.gameObject.transform;
-		newPatternQueueObject.transform.localPosition = new Vector3(startXPosition, 
-																startYPosition, 
-																newPatternQueueObject.transform.position.z);
+		float borderBuffer = 10;
+		float startLayerY = startYPosition + borderBuffer;
+		// float yPositionIncrement = height/numberOfPatternsToDisplay
 
-		PatternQueueObject patternQueueObjectReference = newPatternQueueObject.GetComponent<PatternQueueObject>();
-		patternQueueObjectReference.GetTargetPathingReference().SetTargetPosition(new Vector3(startXPosition, 0, 0));
-	}
+		// foreach(PatternQueueObject patternQueueObject in patternQueueObjects) {
+		// }
 
-	public void AddAtBack(Pattern patternToAdd) {
+		// GameObject newPatternQueueObject = PatternFactory.CreatePattern(patternToAdd);
+
+		// newPatternQueueObject.transform.parent = this.gameObject.transform;
+		// newPatternQueueObject.transform.localPosition = new Vector3(startXPosition, 
+		// 															startYPosition, 
+		// 															newPatternQueueObject.transform.position.z);
+
+		// PatternQueueObject patternQueueObjectReference = newPatternQueueObject.GetComponent<PatternQueueObject>();
+		// patternQueueObjectReference.GetTargetPathingReference().SetTargetPosition(new Vector3(startXPosition, 0, 0));
 	}
 } 
 
