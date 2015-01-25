@@ -38,7 +38,8 @@ public class LevelManager : MonoBehaviour {
   public void Start() {
 
     // TEST CODE
-    MetaTile[,] tiles = MapGeneratorEngine.generateMap(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
+    MapGenerationParams args = new MapGenerationParams(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
+    MetaTile[,] tiles = MapGeneratorEngine.generateMap(args);
     Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
   }
 

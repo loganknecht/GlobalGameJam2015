@@ -17,12 +17,21 @@ public enum GeneratedTileType {
 */
 public class GeneratedTile {
   public GeneratedTileType type;
+  public Vector2 worldCoord;
 
   public GeneratedTile() {
     type = GeneratedTileType.NONE;
   }
   public GeneratedTile(GeneratedTileType type) {
     this.type = type;
+  }
+
+  public void setWorldCoordinate(Vector2 worldCoord) {
+    this.worldCoord = worldCoord;
+  }
+
+  public Vector2 getWorldCoordinate() {
+    return worldCoord;
   }
 
   public override string ToString() {
@@ -113,12 +122,20 @@ public class MetaTile {
     tiles[column, row] = tile;
   }
 
-  public virtual void setTile(int row, int column, GeneratedTile tile) {
+  public virtual void setTile(int column, int row, GeneratedTile tile) {
     tiles[column, row] = tile;
   }
 
-  public virtual GeneratedTile getTile(int row, int column) {
+  public virtual GeneratedTile getTile(int column, int row) {
     return tiles[column, row];
+  }
+
+  public int getColumnCount() {
+    return tiles.GetLength(0);
+  }
+
+  public int getRowCount() {
+    return tiles.GetLength(1);
   }
 
   public void AddValidNeighborLeft(int metaTileId, bool allValid){
@@ -187,30 +204,47 @@ public class MetaTile {
   }
 
   public string[] ToStringArray() {
-    string[] lines = new string[tiles.GetLength(1) + 4];
+    string[] lines = new string[tiles.GetLength(1) + 6];
     string str = "";
     for (int col = 0; col < tiles.GetLength(0) + 2; col++) {
       str += "=";
     }
     lines[0] = str;
+
     str = "| MT: " + id;
     while (str.Length < tiles.GetLength(0) + 1) {
       str += " ";
     }
     str += "|";
     lines[1] = str;
+
+    str = "| " + tiles[0, 0].getWorldCoordinate().x + " " + tiles[0,0].getWorldCoordinate().y;
+    while (str.Length < tiles.GetLength(0) + 1) {
+      str += " ";
+    }
+    str += "|";
+    lines[2] = str;
+
+    Vector2 lastTileCoord = tiles[tiles.GetLength(0) - 1, tiles.GetLength(1) - 1].getWorldCoordinate();
+    str = lastTileCoord.x + " " + lastTileCoord.y + " |";
+    while (str.Length < tiles.GetLength(0) + 1) {
+      str = " " + str;
+    }
+    str = "|" + str;
+    lines[3] = str;
+
     str = "";
     for (int col = 0; col < tiles.GetLength(0) + 2; col++) {
       str += "-";
     }
-    lines[2] = str;
+    lines[4] = str;
     for (int row = 0; row < tiles.GetLength(1); row++) {
       str = "|";
       for (int col = 0; col < tiles.GetLength(0); col++) {
         str += tiles[col, row];
       }
       str += "|";
-      lines[row + 3] = str;
+      lines[row + 5] = str;
     }
     str = "";
     for (int col = 0; col < tiles.GetLength(0) + 2; col++) {
@@ -218,6 +252,26 @@ public class MetaTile {
     }
     lines[lines.Length - 1] = str;
     return lines;
+  }
+}
+
+/*
+* MapGenerationParams
+*/
+public class MapGenerationParams {
+  public MetaTile[] availableTiles;
+  public int seed;
+  public int metaTilesWide;
+  public int metaTilesHigh;
+  public int tileWidth = 1;
+  public int tileHeight = 1;
+  public Vector2 worldCoordinateOffset = new Vector2(0, 0);
+
+  public MapGenerationParams(int metaTilesWide, int metaTilesHigh, MetaTile[] availableTiles, int seed) {
+    this.seed = seed;
+    this.metaTilesWide = metaTilesWide;
+    this.metaTilesHigh = metaTilesHigh;
+    this.availableTiles = availableTiles;
   }
 }
 
@@ -274,16 +328,6 @@ public static class MapGeneratorEngine {
     return metaTiles.ToArray();
   }
 
-  // public static Dictionary<int, MetaTile> getMetaTileDictionary(MetaTile[] tiles) {
-  //   Dictionary<int, MetaTile> dict = new Dictionary<int, MetaTile>();
-
-  //   foreach (MetaTile tile in tiles) {
-  //     dict.Add(tile.id, tile);
-  //   }
-
-  //   return dict;
-  // }
-
   public static MetaTile[] getValidMetaTilePool(
       MetaTile[] availableTiles,
       MetaTile left,
@@ -315,9 +359,30 @@ public static class MapGeneratorEngine {
     return validTiles.ToArray();
   }
 
-  public static MetaTile[,] generateMap (int metaTilesWide, int metaTilesHigh, MetaTile[] availableTiles, int seed) {
+  public static void setWorldCoordinates(MetaTile[,] tiles, float tileWidth, float tileHeight, Vector2 offset) {
+    for (int col = 0; col < tiles.GetLength(0); col++) {
+      for (int row = 0; row < tiles.GetLength(1); row++) {
+        MetaTile mt = tiles[col, row];
+        float xSoFar = col * mt.getColumnCount() * tileWidth;
+        float ySoFar = row * mt.getRowCount() * tileHeight;
+        for (int tileCol = 0; tileCol < mt.getColumnCount(); tileCol++) {
+          for (int tileRow = 0; tileRow < mt.getRowCount(); tileRow++) {
+            float worldX = offset.x + (tileCol * tileWidth) + xSoFar;
+            float worldY = offset.y + (tileRow * tileHeight) + ySoFar;
+            mt.getTile(tileCol, tileRow).setWorldCoordinate(new Vector2(worldX, worldY));
+          }
+        }
+      }
+    }
+  }
+
+  public static MetaTile[,] generateMap (MapGenerationParams args) {
+    int seed = args.seed;
+    int metaTilesWide = args.metaTilesWide;
+    int metaTilesHigh = args.metaTilesHigh;
+    MetaTile[] availableTiles = args.availableTiles;
+
     System.Random rando = new System.Random(seed);
-    // Dictionary<int, MetaTile> dict = getMetaTileDictionary(availableTiles);
 
     MetaTile[,] tiles = new MetaTile[metaTilesWide, metaTilesHigh];
 
@@ -340,6 +405,8 @@ public static class MapGeneratorEngine {
         tiles[col, row] = tilePool[index];
       }
     }
+
+    setWorldCoordinates(tiles, args.tileWidth, args.tileHeight, args.worldCoordinateOffset);
 
     return tiles;
   }
