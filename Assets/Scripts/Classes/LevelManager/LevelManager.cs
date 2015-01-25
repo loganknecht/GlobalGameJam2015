@@ -36,6 +36,10 @@ public class LevelManager : MonoBehaviour {
   //END OF SINGLETON CODE CONFIGURATION
 
   public void Start() {
+
+    // TEST CODE
+    MetaTile[,] tiles = MapGeneratorEngine.generateMap(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
+    Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
   }
 
   public void Update() {

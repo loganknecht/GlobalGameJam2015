@@ -3,24 +3,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TileMapGenerator : MonoBehaviour {
-
-  // Use this for initialization
-  void Start () {
-  
-  }
-  
-  // Update is called once per frame
-  void Update () {
-  
-  }
-}
-
-// REPLACE THIS WITH THE TileType enum that will eventually be created
+/*
+* GeneratedTileType enum
+*/
 public enum GeneratedTileType {
   NONE, PATTERN
 }
 
+/*
+* GeneratedTile
+*
+* Represents a wold tile
+*/
 public class GeneratedTile {
   public GeneratedTileType type;
 
@@ -30,8 +24,25 @@ public class GeneratedTile {
   public GeneratedTile(GeneratedTileType type) {
     this.type = type;
   }
+
+  public override string ToString() {
+    switch (type) {
+      case GeneratedTileType.NONE:
+        return "0";
+      case GeneratedTileType.PATTERN:
+        return "P";
+      default:
+        return "X";
+    }
+  }
 }
 
+/*
+* MetaTilePlacementRule
+*
+* A rule that decides whether or not a meta tile
+* can be placed next to another meta tile
+*/
 public class MetaTilePlacementRule {
   public bool allValid;
   public List<int> validNeighbors;
@@ -51,6 +62,9 @@ public class MetaTilePlacementRule {
   }
 }
 
+/*
+* MetaTile
+*/
 public class MetaTile {
 
   private static int ID_COUNTER = 0;
@@ -94,7 +108,7 @@ public class MetaTile {
     this.tiles = tiles;
   }
 
-  public virtual void createTile(int row, int column, GeneratedTileType type) {
+  public virtual void createTile(int column, int row, GeneratedTileType type) {
     GeneratedTile tile = new GeneratedTile(type);
     tiles[column, row] = tile;
   }
@@ -163,8 +177,56 @@ public class MetaTile {
     return bottomLeftRule.isValidNeighbor(metaTileId);
   }
 
+  public override string ToString() {
+    string str = "";
+    string[] lines = ToStringArray();
+    foreach(string line in lines) {
+      str += line + "\n";
+    }
+    return str;
+  }
+
+  public string[] ToStringArray() {
+    string[] lines = new string[tiles.GetLength(1) + 4];
+    string str = "";
+    for (int col = 0; col < tiles.GetLength(0) + 2; col++) {
+      str += "=";
+    }
+    lines[0] = str;
+    str = "| MT: " + id;
+    while (str.Length < tiles.GetLength(0) + 1) {
+      str += " ";
+    }
+    str += "|";
+    lines[1] = str;
+    str = "";
+    for (int col = 0; col < tiles.GetLength(0) + 2; col++) {
+      str += "-";
+    }
+    lines[2] = str;
+    for (int row = 0; row < tiles.GetLength(1); row++) {
+      str = "|";
+      for (int col = 0; col < tiles.GetLength(0); col++) {
+        str += tiles[col, row];
+      }
+      str += "|";
+      lines[row + 3] = str;
+    }
+    str = "";
+    for (int col = 0; col < tiles.GetLength(0) + 2; col++) {
+      str += "=";
+    }
+    lines[lines.Length - 1] = str;
+    return lines;
+  }
 }
 
+/*
+* MapGeneratorEngine
+*
+* This static class contains a method for generaing
+* a map out of meta tiles and associated helper methods.
+*/
 public static class MapGeneratorEngine {
   public const int META_TILE_WIDTH = 10;
   public const int META_TILE_HEIGHT = 10;
@@ -237,14 +299,14 @@ public static class MapGeneratorEngine {
     foreach(MetaTile tile in availableTiles) {
       int tileId = tile.id;
       if (
-          (left != null && left.isValidNeighborLeft(tileId)) ||
-          (topLeft != null && topLeft.isValidNeighborTopLeft(tileId)) ||
-          (top != null && top.isValidNeighborTop(tileId)) ||
-          (topRight != null && topRight.isValidNeighborTopRight(tileId)) ||
-          (right != null && right.isValidNeighborRight(tileId)) ||
-          (bottomRight != null && bottomRight.isValidNeighborBottomRight(tileId)) ||
-          (bottom != null && bottom.isValidNeighborBottom(tileId)) ||
-          (bottomLeft != null && bottomLeft.isValidNeighborBottomLeft(tileId))) {
+          (left == null || left.isValidNeighborLeft(tileId)) ||
+          (topLeft == null || topLeft.isValidNeighborTopLeft(tileId)) ||
+          (top == null || top.isValidNeighborTop(tileId)) ||
+          (topRight == null || topRight.isValidNeighborTopRight(tileId)) ||
+          (right == null || right.isValidNeighborRight(tileId)) ||
+          (bottomRight == null || bottomRight.isValidNeighborBottomRight(tileId)) ||
+          (bottom == null || bottom.isValidNeighborBottom(tileId)) ||
+          (bottomLeft == null || bottomLeft.isValidNeighborBottomLeft(tileId))) {
 
         validTiles.Add(tile);
       }
@@ -280,5 +342,22 @@ public static class MapGeneratorEngine {
     }
 
     return tiles;
+  }
+
+  public static string getStringRepresentation(MetaTile[,] tiles) {
+    string str = "";
+    for (int row = 0; row < tiles.GetLength(1); row++) {
+      string[][] mtReps = new string[tiles.GetLength(0)][];
+      for (int col = 0; col < tiles.GetLength(0); col++) {
+        mtReps[col] = tiles[col, row].ToStringArray();
+      }
+      for (int tileY = 0; tileY < mtReps[0].Length; tileY++) {
+        for (int tileX = 0; tileX < mtReps.Length; tileX++) {
+          str += mtReps[tileX][tileY];
+        }
+        str += "\n";
+      }
+    }
+    return str;
   }
 }
