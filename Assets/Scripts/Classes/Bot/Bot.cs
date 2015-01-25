@@ -9,6 +9,7 @@ public class Bot : MonoBehaviour {
 	public Rigidbody2D rigidBody;
 	public JumpDetection jumpDetection;
 	public LandingDetection landingDetection;
+	public Vector2 maxVelocity = new Vector2(10, 10);
 
 	// Use this for initialization
 	public virtual void Start () {

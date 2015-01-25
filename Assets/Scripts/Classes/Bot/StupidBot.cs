@@ -16,6 +16,18 @@ public class StupidBot : Bot {
     public override void PerformMovementLogic() {
         Vector2 movementStep = movementLogic.CalculateMovementStep();
 
+        // If moving right, but velocity is left direction, set to zero
+        if(movementLogic.movingLeft
+            && !movementLogic.movingRight
+            && rigidBody.velocity.x > 0) {
+            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        }
+        if(movementLogic.movingRight
+            && !movementLogic.movingRight
+            && rigidBody.velocity.x < 0) {
+            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        }
+        
         rigidBody.AddForce(new Vector2(movementStep.x, movementStep.y));
 
         // resets velocity if not moving left or right so deceleration just a flat stop
