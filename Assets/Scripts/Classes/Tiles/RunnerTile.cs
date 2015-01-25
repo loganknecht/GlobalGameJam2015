@@ -25,7 +25,7 @@ public class RunnerTile : Tile {
     void Start () {
         var values = Pattern.GetValues (Pattern.GetType ());
         int num = (int)(Random.value * values.Length);
-		Pattern = (Pattern)values.GetValue (num);	
+        Pattern = (Pattern)values.GetValue (num);   
         Debug.Log ("I chose pattern " + this.Pattern);
     }
 
@@ -33,11 +33,11 @@ public class RunnerTile : Tile {
     public override void Update () {
         if (this.touchActivated.HasBeenActivated) {
             if (PQ.ContainsPattern(this.Pattern)) {
-				SoundManager.Instance.Play(AudioType.Correct1);
+                SoundManager.Instance.Play(AudioType.Correct1);
                 OnActivation();
             } else {
-				SoundManager.Instance.Play(AudioType.Correct2);
-			}
+                SoundManager.Instance.Play(AudioType.Correct2);
+            }
             this.touchActivated.Reset();
         }
     }
