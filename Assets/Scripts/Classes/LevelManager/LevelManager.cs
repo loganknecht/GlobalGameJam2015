@@ -41,13 +41,11 @@ public class LevelManager : MonoBehaviour {
   public void Start() {
 
     // TEST CODE
-<<<<<<< HEAD
     MetaTile[,] tiles = MapGeneratorEngine.generateMap(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
     // TileMapManager.Instance.SetTileMap();
-=======
     MapGenerationParams args = new MapGenerationParams(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
     MetaTile[,] tiles = MapGeneratorEngine.generateMap(args);
->>>>>>> cc1d0599f0d6af1ac885db38bdbde9dcdd282e93
+    
     Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
 
     // lol TODO: make it work
