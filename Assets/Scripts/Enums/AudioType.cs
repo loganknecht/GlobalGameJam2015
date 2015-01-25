@@ -14,5 +14,8 @@
   Peeing1,
   Pooping1,
   TextboxNextButtonPressBeep,
+
+  Jump1,
+  Jump2,
 }
 
