@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using FullInspector;
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TileMapManager : MonoBehaviour {
+public class TileMapManager : BaseBehavior {
 
     //Probably doesn't need to be a singleton
     //BEGINNING OF SINGLETON CODE CONFIGURATION
@@ -59,6 +61,7 @@ public class TileMapManager : MonoBehaviour {
                 }
 
                 newTileGameObject.transform.position = new Vector3(col, row, newTileGameObject.transform.position.z);
+                newTileGameObject.transform.parent = this.gameObject.transform;
             }
         }
 

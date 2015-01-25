@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class StupidBot : Bot {
-    public bool continuouslyMoveRight = false;
-
     // Use this for initialization
     public override void Start () {
         base.Start();

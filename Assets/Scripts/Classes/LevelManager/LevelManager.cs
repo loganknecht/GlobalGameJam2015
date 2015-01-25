@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour {
 
   public GameObject levelFailedPanel;
   public GameObject levelWonPanel;
+  public GameObject winCollider;
+  public GameObject failCollider;
 
   //Stops the lock being created ahead of time if it's not necessary
   static LevelManager() {
@@ -46,6 +48,8 @@ public class LevelManager : MonoBehaviour {
     // Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
     // lol TODO: make it work
     TileMapManager.Instance.tiles = TileMapManager.Instance.GenerateTileMap(tiles);
+    Debug.Log(TileMapManager.Instance.name);
+    // winCollider.transform.position = new Vector3(0, TileMapManager.Instance.tiles[0][0].transform.position.y - 1, winCollider.transform.position.z);
 
     SoundManager.Instance.PlayMusic(AudioType.RobotDemo);
   }
