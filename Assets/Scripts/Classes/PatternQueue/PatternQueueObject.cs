@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PatternQueueObject : MonoBehaviour {
-    TargetPathing targetPathing;
+    public TargetPathing targetPathing;
     public List<Pattern> patterns;
 
     public void Awake() {
