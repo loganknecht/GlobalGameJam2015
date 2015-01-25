@@ -17,13 +17,14 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		PerformDebugKeys();
+		// PerformDebugKeys();
 	}
 
 	public Vector2 GetCurrentVelocity() {
 		Vector2 velocity = Vector2.zero;
 		if(movingLeft || movingRight) {
-			velocity.x = (Input.GetAxis("Horizontal") * xMoveSpeed);
+			// velocity.x = (Input.GetAxis("Horizontal") * xMoveSpeed);
+			velocity.x = (1 * xMoveSpeed);
 		}
 
 		if(jumpTriggered
@@ -66,7 +67,7 @@ public class Movement : MonoBehaviour {
 			jumpTriggered = true;
 		}
 	}
-	
+
 	public void ResetJump() {
 		jumpTriggered = false;
 		hasUsedJump = false;
