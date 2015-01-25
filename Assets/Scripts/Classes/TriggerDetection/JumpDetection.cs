@@ -4,7 +4,7 @@ using System.Collections;
 public class JumpDetection : MonoBehaviour {
 	public bool detectedJump = true;
 
-	public bool detectedSpikes = false;
+	public bool detectedSpikes;
 
 	// Use this for initialization
 	void Start () {
@@ -21,13 +21,14 @@ public class JumpDetection : MonoBehaviour {
 	public void Reset() {
 		detectedJump = false;
 	}
-
+	public void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.tag == "Spikes") {
+			detectedSpikes = true;
+		}
+	}
 	public void OnCollisionEnter2D(Collision2D collision) {
 		if(collision.gameObject.GetComponent<JumpTrigger>()) {
 			detectedJump = true;
-		}
-		if (collision.gameObject.tag == "Spikes") {
-			detectedSpikes = true;
 		}
 	}
 	public void OnCollisionStay2D(Collision2D collision) {
