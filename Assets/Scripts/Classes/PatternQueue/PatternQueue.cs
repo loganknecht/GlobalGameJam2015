@@ -24,26 +24,29 @@ public class PatternQueue : MonoBehaviour {
 	}
 
 	public void Update() {
+		CalculatePatternQueueLayout();
 	}
 
 	public void CalculatePatternQueueLayout() {
-		Vector3 cameraTopLeftWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(0,
-																								 1,
-																								 Camera.main.camera.nearClipPlane));
+		Vector3 cameraBottomLeftWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(0,
+																									0,
+																									Camera.main.camera.nearClipPlane));
 
-		Vector3 cameraBottomRightWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(1,
-																									 0,
-																									 Camera.main.camera.nearClipPlane));
+		Vector3 cameraTopRightWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(1,
+																								  1,
+																								  Camera.main.camera.nearClipPlane));
 
-		width = (cameraBottomRightWorldPosition.x - cameraTopLeftWorldPosition.x);
-		height = (cameraTopLeftWorldPosition.y - cameraBottomRightWorldPosition.y);
+		width = (cameraTopRightWorldPosition.x - cameraBottomLeftWorldPosition.x);
+		height = (cameraTopRightWorldPosition.y - cameraBottomLeftWorldPosition.y);
 
 		centerX = width/2;
 		// centerY = height/2;
 
 		// This sets the start x position for the pattern queue to be offset from the left of the screen, calculating it as a slice of the total width
-		startXPosition = cameraTopLeftWorldPosition.x + (width/8)/2;
-		startYPosition = cameraTopLeftWorldPosition.y;
+		float leftBound = 0 - width/2;
+		float topBound = 0 + height/2;
+		startXPosition = leftBound + (width/8)/2;
+		startYPosition = topBound;
 
 		Debug.Log("Start X: " + startXPosition);
 		Debug.Log("Start Y: " + startYPosition);
@@ -57,15 +60,14 @@ public class PatternQueue : MonoBehaviour {
 
 	public void AddAtFront(Pattern patternToAdd) {
 		GameObject newPatternQueueObject = PatternFactory.CreatePattern(patternToAdd);
-		float startX = startXPosition;
 
 		newPatternQueueObject.transform.parent = this.gameObject.transform;
-		newPatternQueueObject.transform.position = new Vector3(startX, 
+		newPatternQueueObject.transform.localPosition = new Vector3(startXPosition, 
 																startYPosition, 
 																newPatternQueueObject.transform.position.z);
 
 		PatternQueueObject patternQueueObjectReference = newPatternQueueObject.GetComponent<PatternQueueObject>();
-		patternQueueObjectReference.GetTargetPathingReference().SetTargetPosition(new Vector3(startX, 0, 0));
+		patternQueueObjectReference.GetTargetPathingReference().SetTargetPosition(new Vector3(startXPosition, 0, 0));
 	}
 
 	public void AddAtBack(Pattern patternToAdd) {

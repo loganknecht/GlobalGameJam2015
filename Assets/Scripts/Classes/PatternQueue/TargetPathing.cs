@@ -82,7 +82,17 @@ public class TargetPathing : MonoBehaviour {
         onArrival = new OnArrival(newOnArrival);
     }
 
-    public bool IsAtMovementNodePosition() {
+    public bool IsAtMovementNodeLocalPosition() {
+        if(gameObjectToMove.transform.localPosition.x == targetPosition.x
+            && gameObjectToMove.transform.localPosition.y == targetPosition.y) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public bool IsAtMovementNodeWorldPosition() {
         if(gameObjectToMove.transform.position.x == targetPosition.x
             && gameObjectToMove.transform.position.y == targetPosition.y) {
             return true;
@@ -91,6 +101,7 @@ public class TargetPathing : MonoBehaviour {
             return false;
         }
     }
+
     public bool IsAtTargetPosition() {
         if(movementNodes.Count == 0
             && gameObjectToMove.transform.position.x == targetPosition.x
@@ -112,28 +123,37 @@ public class TargetPathing : MonoBehaviour {
         //This is the logic for the bro moving to their destination
         Vector2 newPositionOffset = Vector2.zero;
         if(useLocalPosition) {
-            newPositionOffset = CalculateNextLocalPositionOffset();
-        }
-        else {
             newPositionOffset = CalculateNextWorldPositionOffset();
-        }
-        newPositionOffset = (newPositionOffset*Time.deltaTime);
-        newPositionOffset = LockNewPositionOffsetToTarget(newPositionOffset);
-        if(useLocalPosition) {
+            newPositionOffset = (newPositionOffset*Time.deltaTime);
+            newPositionOffset = LockNewLocalPositionOffsetToTarget(newPositionOffset);
+
             transform.localPosition += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
+
+            if(IsAtMovementNodeLocalPosition()) {
+                if(onArrival != null) {
+                    onArrival();
+                }
+
+                //Debug.Log("object at position");
+                PopMovementNode();
+            }
         }
         else {
+            newPositionOffset = CalculateNextLocalPositionOffset();
+            newPositionOffset = (newPositionOffset*Time.deltaTime);
+            newPositionOffset = LockNewWorldPositionOffsetToTarget(newPositionOffset);
+
             transform.position += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
-        }
 
-        //performs check to pop new node from the movemeNodes list
-        if(IsAtMovementNodePosition()) {
-            if(onArrival != null) {
-                onArrival();
+            //performs check to pop new node from the movemeNodes list
+            if(IsAtMovementNodeWorldPosition()) {
+                if(onArrival != null) {
+                    onArrival();
+                }
+
+                //Debug.Log("object at position");
+                PopMovementNode();
             }
-
-            //Debug.Log("object at position");
-            PopMovementNode();
         }
     }
 
@@ -188,7 +208,26 @@ public class TargetPathing : MonoBehaviour {
         return newPositionOffset;
     }
 
-    public virtual Vector2 LockNewPositionOffsetToTarget(Vector2 newPositionOffset) {
+    public virtual Vector2 LockNewLocalPositionOffsetToTarget(Vector2 newPositionOffset) {
+        if((gameObjectToMove.transform.localPosition.x + newPositionOffset.x) > (targetPosition.x - targetPositionXLockBuffer)
+            && (gameObjectToMove.transform.localPosition.x + newPositionOffset.x) < (targetPosition.x + targetPositionXLockBuffer)) {
+            gameObjectToMove.transform.localPosition = new Vector3(targetPosition.x,
+                                                             gameObjectToMove.transform.localPosition.y,
+                                                             gameObjectToMove.transform.localPosition.z);
+            newPositionOffset.x = 0;
+        }
+        if((gameObjectToMove.transform.localPosition.y + newPositionOffset.y) > (targetPosition.y - targetPositionYLockBuffer)
+            && (gameObjectToMove.transform.localPosition.y + newPositionOffset.y) < (targetPosition.y + targetPositionYLockBuffer)) {
+            gameObjectToMove.transform.localPosition = new Vector3(gameObjectToMove.transform.localPosition.x,
+                                                             targetPosition.y,
+                                                             gameObjectToMove.transform.localPosition.z);
+            newPositionOffset.y = 0;
+        }
+
+        return newPositionOffset;
+    }
+
+    public virtual Vector2 LockNewWorldPositionOffsetToTarget(Vector2 newPositionOffset) {
         if((gameObjectToMove.transform.position.x + newPositionOffset.x) > (targetPosition.x - targetPositionXLockBuffer)
             && (gameObjectToMove.transform.position.x + newPositionOffset.x) < (targetPosition.x + targetPositionXLockBuffer)) {
             gameObjectToMove.transform.position = new Vector3(targetPosition.x,
