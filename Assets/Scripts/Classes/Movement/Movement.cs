@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour {
 
 	public bool jumpTriggered = false;
 	public bool hasUsedJump = false;
+    public bool debug = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,9 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// PerformDebugKeys();
+		if(debug) {
+			PerformDebugKeys();
+		}
 	}
 
 	public Vector2 GetCurrentVelocity() {
