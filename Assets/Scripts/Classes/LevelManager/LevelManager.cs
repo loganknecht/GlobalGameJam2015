@@ -39,15 +39,15 @@ public class LevelManager : MonoBehaviour {
   //END OF SINGLETON CODE CONFIGURATION
 
   public void Start() {
-
     // TEST CODE
     MapGenerationParams args = new MapGenerationParams(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
     GeneratedTile[][] tiles = MapGeneratorEngine.generateMap(args);
 
     Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
-
     // lol TODO: make it work
     // TileMapManager.Instance.GenerateTileMap(null);
+
+    SoundManager.Instance.PlayMusic(AudioType.RobotDemo);
   }
 
   public void Update() {

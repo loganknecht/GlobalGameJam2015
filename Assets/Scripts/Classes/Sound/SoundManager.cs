@@ -117,6 +117,7 @@ public class SoundManager : MonoBehaviour {
 		soundDictionary [AudioType.Jump2] = "Sound/jump2";
 		soundDictionary [AudioType.Correct1] = "Sound/success1";
 		soundDictionary [AudioType.Correct2] = "Sound/success2";
+        soundDictionary [AudioType.RobotDemo] = "Sound/robot_demo";
 
   }
 

@@ -34,7 +34,7 @@ public class RunnerTile : Tile {
     // Update is called once per frame
     public override void Update () {
         if (this.touchActivated.HasBeenActivated) {
-            if (PQ.ContainsPattern(this.pattern)) {
+            if(PQ.ContainsPattern(this.pattern)) {
                 SoundManager.Instance.Play(AudioType.Correct1);
                 OnActivation();
             } else {

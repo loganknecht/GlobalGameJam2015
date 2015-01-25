@@ -1,23 +1,10 @@
 ﻿public enum AudioType {
   None,
-  CosmicSpaceHeadSurfing,
-  EntranceQueueDoorOpenClubMusic,
-  Fart1,
-  Fart2,
-  Fart3,
-  Fart4,
-  Fart5,
-  Flush1,
-  Flush2,
-  GreenDogPedalCopter,
-  GreendogIntroAztecTemples,
-  Peeing1,
-  Pooping1,
-  TextboxNextButtonPressBeep,
 
   Jump1,
   Jump2,
   Correct1,
   Correct2,
+  RobotDemo,
 }
 

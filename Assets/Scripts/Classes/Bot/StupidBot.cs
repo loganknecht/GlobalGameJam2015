@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class StupidBot : Bot {
+    public bool continuouslyMoveRight = false;
 
     // Use this for initialization
     public override void Start () {
@@ -10,6 +11,9 @@ public class StupidBot : Bot {
     
     // Update is called once per frame
     public override void Update () {
+        if(continuouslyMoveRight) {
+            movementLogic.movingRight = true;
+        }
         base.Update();
     }
 
