@@ -40,12 +40,12 @@ public class LevelManager : MonoBehaviour {
 
   public void Start() {
     // TEST CODE
-    MapGenerationParams args = new MapGenerationParams(8, 4, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
+    MapGenerationParams args = new MapGenerationParams(16, 8, MapGeneratorEngine.generatePredefinedMetaTiles(), 42);
     GeneratedTile[][] tiles = MapGeneratorEngine.generateMap(args);
 
-    Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
+    // Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
     // lol TODO: make it work
-    // TileMapManager.Instance.GenerateTileMap(null);
+    TileMapManager.Instance.tiles = TileMapManager.Instance.GenerateTileMap(tiles);
 
     SoundManager.Instance.PlayMusic(AudioType.RobotDemo);
   }

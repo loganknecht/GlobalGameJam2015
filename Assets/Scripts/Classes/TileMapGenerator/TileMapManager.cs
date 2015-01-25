@@ -8,7 +8,7 @@ public class TileMapManager : MonoBehaviour {
     //BEGINNING OF SINGLETON CODE CONFIGURATION
     private static volatile TileMapManager _instance;
     private static object _lock = new object();
-    public TileMap tileMap; 
+    public Tile[][] tiles; 
 
     //Stops the lock being created ahead of time if it's not necessary
     static TileMapManager() {
@@ -42,9 +42,26 @@ public class TileMapManager : MonoBehaviour {
     public void Update() {
     }
 
-    public TileMap GenerateTileMap(Tile[][] newTileMap) {
+    public Tile[][] GenerateTileMap(GeneratedTile[][] newTileMap) {
         GameObject tileMap = new GameObject();
         tileMap.AddComponent<TileMap>();
-        return null;
+
+        Tile[][] newTiles = new Tile[newTileMap.Length][];
+        for(int col = 0; col < newTileMap.Length; col++) {
+            newTiles[col] = new Tile[newTileMap[0].Length];
+            for (int row = 0; row < newTileMap[0].Length; row++) {
+                GeneratedTile genTile = newTileMap[col][row];
+                GameObject newTileGameObject = null;
+                if (genTile.type == GeneratedTileType.NONE) {
+                    newTileGameObject = PatternFactory.CreateEmptyTile();
+                } else if (genTile.type == GeneratedTileType.PATTERN) {
+                    newTileGameObject = PatternFactory.CreateRunnerTile();
+                }
+
+                newTileGameObject.transform.position = new Vector3(col, row, newTileGameObject.transform.position.z);
+            }
+        }
+
+        return newTiles;
     }
 }

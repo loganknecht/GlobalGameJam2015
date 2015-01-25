@@ -28,7 +28,7 @@ public class RunnerTile : Tile {
             int num = (int)(Random.value * patterns.Length);
             pattern = (Pattern)patterns.GetValue(num);   
         }
-        Debug.Log ("I chose pattern " + this.pattern);
+        // Debug.Log ("I chose pattern " + this.pattern);
     }
 
     // Update is called once per frame
