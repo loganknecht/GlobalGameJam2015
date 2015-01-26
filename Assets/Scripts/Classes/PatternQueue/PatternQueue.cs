@@ -14,8 +14,10 @@ public class PatternQueue : MonoBehaviour {
 
     float width = 0;
     float height = 0;
-    float startXPosition = 0;
-    float startYPosition = 0;
+    float objectHeight = 1f;
+    float yPositionIncrement = 0;
+    float borderBuffer = 0.5f;
+
     public int numberOfPatternsToDisplay = 1;
 
     public List<PatternQueueObject> patternQueueObjects;
@@ -26,34 +28,10 @@ public class PatternQueue : MonoBehaviour {
     public void Start() {
         patternQueueObjects = new List<PatternQueueObject>();
 
-        CalculatePatternQueueLayout();
+        CalculateInitialPatternQueueLayout();
     }
 
     public void Update() {
-    }
-
-    public void CalculatePatternQueueLayout() {
-        Vector3 cameraBottomLeftWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(0,
-                                                                                                    0,
-                                                                                                    Camera.main.camera.nearClipPlane));
-
-        Vector3 cameraTopRightWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(1,
-                                                                                                  1,
-                                                                                                  Camera.main.camera.nearClipPlane));
-
-        width = (cameraTopRightWorldPosition.x - cameraBottomLeftWorldPosition.x);
-        height = (cameraTopRightWorldPosition.y - cameraBottomLeftWorldPosition.y);
-
-        // This sets the start x position for the pattern queue to be offset from the left of the screen, calculating it as a slice of the total width
-        float leftBound = 0 - width/2;
-        float topBound = 0 + height/2;
-        startXPosition = leftBound + (width/8)/2;
-        startYPosition = topBound;
-
-        // Debug.Log("Start X: " + startXPosition);
-        // Debug.Log("Start Y: " + startYPosition);
-        // Debug.Log("Width: " + width);
-        // Debug.Log("Height: " + height);
     }
 
     public bool ContainsPattern(Pattern typeToCheck) {
@@ -68,7 +46,10 @@ public class PatternQueue : MonoBehaviour {
     }
 
     public void AddPattern() {
-        CalculatePatternQueueLayout();
+        CalculateInitialPatternQueueLayout();
+
+        float startXPosition = 0 - width/2;
+        float startYPosition = (0 + height/2) - (objectHeight/2) - borderBuffer;
 
         GameObject newPatternQueueObject = PatternFactory.CreatePattern();
         newPatternQueueObject.transform.parent = this.gameObject.transform;
@@ -81,20 +62,41 @@ public class PatternQueue : MonoBehaviour {
         CalculateNewLayout();
     }
 
+    public void CalculateInitialPatternQueueLayout() {
+        Vector3 cameraBottomLeftWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(0,
+                                                                                                    0,
+                                                                                                    Camera.main.camera.nearClipPlane));
+
+        Vector3 cameraTopRightWorldPosition = Camera.main.camera.ViewportToWorldPoint(new Vector3(1,
+                                                                                                  1,
+                                                                                                  Camera.main.camera.nearClipPlane));
+
+        width = (cameraTopRightWorldPosition.x - cameraBottomLeftWorldPosition.x);
+        height = (cameraTopRightWorldPosition.y - cameraBottomLeftWorldPosition.y);
+
+        // Debug.Log("Start X: " + startXPosition);
+        // Debug.Log("Start Y: " + startYPosition);
+        // Debug.Log("Width: " + width);
+        // Debug.Log("Height: " + height);
+    }
+
     public void CalculateNewLayout() {
         //----------------------------------------------------------------------------------
         // This BADLY needs to be fixed, but for game jam status we're moving on
         //----------------------------------------------------------------------------------
-        float objectHeight = 1.5f;
-        float yPositionIncrement = height/patternQueueObjects.Count;
-        float topBound = 0 + height/2;
-        float yPosition = topBound - objectHeight;
+        float startXPosition = 0 - width/2;
+        float xPosition = startXPosition + (width/8)/2;
+
+        float startYPosition = (0 + height/2) - (objectHeight/2) - borderBuffer;
+        float yPosition = startYPosition;
+        // Include a border buffer for the calculation
+        float yPositionIncrement = (height - (borderBuffer*2))/patternQueueObjects.Count;
 
         for(int i = patternQueueObjects.Count - 1; i >= 0; i--) {
             PatternQueueObject currentPatternQueueObject = patternQueueObjects[i];
-            currentPatternQueueObject.GetTargetPathingReference().SetTargetPosition(new Vector3(startXPosition, 
-                                                                                         yPosition,
-                                                                                         currentPatternQueueObject.transform.position.z));
+            currentPatternQueueObject.GetTargetPathingReference().SetTargetPosition(new Vector3(xPosition, 
+                                                                                                yPosition,
+                                                                                                currentPatternQueueObject.transform.position.z));
             yPosition -= yPositionIncrement;
         }
     }

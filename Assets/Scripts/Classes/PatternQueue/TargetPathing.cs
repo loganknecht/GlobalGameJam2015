@@ -123,13 +123,14 @@ public class TargetPathing : MonoBehaviour {
         //This is the logic for the bro moving to their destination
         Vector2 newPositionOffset = Vector2.zero;
         if(useLocalPosition) {
-            newPositionOffset = CalculateNextWorldPositionOffset();
+            newPositionOffset = CalculateNextLocalPositionOffset();
             newPositionOffset = (newPositionOffset*Time.deltaTime);
             newPositionOffset = LockNewLocalPositionOffsetToTarget(newPositionOffset);
 
-            transform.localPosition += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
+            transform.position += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
 
-            if(IsAtMovementNodeLocalPosition()) {
+            //performs check to pop new node from the movemeNodes list
+            if(IsAtMovementNodeWorldPosition()) {
                 if(onArrival != null) {
                     onArrival();
                 }
@@ -139,14 +140,14 @@ public class TargetPathing : MonoBehaviour {
             }
         }
         else {
-            newPositionOffset = CalculateNextLocalPositionOffset();
+            newPositionOffset = CalculateNextWorldPositionOffset();
             newPositionOffset = (newPositionOffset*Time.deltaTime);
+            Debug.Log("new newPosition offset: " + newPositionOffset);
             newPositionOffset = LockNewWorldPositionOffsetToTarget(newPositionOffset);
 
-            transform.position += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
+            transform.localPosition += new Vector3(newPositionOffset.x, newPositionOffset.y, 0);
 
-            //performs check to pop new node from the movemeNodes list
-            if(IsAtMovementNodeWorldPosition()) {
+            if(IsAtMovementNodeLocalPosition()) {
                 if(onArrival != null) {
                     onArrival();
                 }

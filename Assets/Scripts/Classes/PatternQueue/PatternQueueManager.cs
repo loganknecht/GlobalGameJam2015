@@ -85,9 +85,9 @@ public class PatternQueueManager : MonoBehaviour {
         List<PatternQueueObject> patternQueueObjectToRemove = new List<PatternQueueObject>();
         foreach(PatternQueueObject patternQueueObject in GetPatternQueue().patternQueueObjects) {
             if(patternQueueObject.HasExpired()) {
-                patternQueueObject.GetTargetPathingReference().SetTargetPosition(new Vector3(patternQueueObject.transform.position.x, 
+                patternQueueObject.GetTargetPathingReference().SetTargetPosition(new Vector3(patternQueueObject.transform.localPosition.x, 
                                                                                              -50,
-                                                                                             patternQueueObject.transform.position.z));
+                                                                                             patternQueueObject.transform.localPosition.z));
                 patternQueueObjectToRemove.Add(patternQueueObject);
             }
         }
