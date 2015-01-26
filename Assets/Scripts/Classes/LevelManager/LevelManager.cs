@@ -48,8 +48,9 @@ public class LevelManager : MonoBehaviour {
     // Debug.Log(MapGeneratorEngine.getStringRepresentation(tiles));
     // lol TODO: make it work
     TileMapManager.Instance.GenerateTileMap(tiles);
-    // winCollider.transform.position = new Vector3(0, TileMapManager.Instance.tiles[0][0].transform.position.y - 1, winCollider.transform.position.z);
-    // failCollider.transform.position = new Vector3(0, TileMapManager.Instance.tiles[0][0].transform.position.y - 1, winCollider.transform.position.z);
+    int tileMapWidth = TileMapManager.Instance.tiles.Length;
+    winCollider.transform.position = new Vector3(0, TileMapManager.Instance.tiles[0][0].transform.position.y - 1, winCollider.transform.position.z);
+    failCollider.transform.position = new Vector3(TileMapManager.Instance.tiles[tileMapWidth - 1][0].transform.position.x, 0, winCollider.transform.position.z);
 
     SoundManager.Instance.PlayMusic(AudioType.RobotDemo);
   }

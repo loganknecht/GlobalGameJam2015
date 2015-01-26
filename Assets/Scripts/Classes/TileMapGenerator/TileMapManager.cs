@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+﻿using FullInspector;
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TileMapManager : MonoBehaviour {
+public class TileMapManager : BaseBehavior {
 
     //Probably doesn't need to be a singleton
     //BEGINNING OF SINGLETON CODE CONFIGURATION
     private static volatile TileMapManager _instance;
     private static object _lock = new object();
-    public Tile[][] tiles; 
+    public GameObject[][] tiles; 
 
     //Stops the lock being created ahead of time if it's not necessary
     static TileMapManager() {
@@ -43,9 +45,9 @@ public class TileMapManager : MonoBehaviour {
     }
 
     public void GenerateTileMap(GeneratedTile[][] newTileMap) {
-        Tile[][] newTiles = new Tile[newTileMap.Length][];
+        GameObject[][] newTiles = new GameObject[newTileMap.Length][];
         for(int col = 0; col < newTileMap.Length; col++) {
-            newTiles[col] = new Tile[newTileMap[0].Length];
+            newTiles[col] = new GameObject[newTileMap[0].Length];
             for (int row = 0; row < newTileMap[0].Length; row++) {
                 GeneratedTile genTile = newTileMap[col][row];
                 GameObject newTileGameObject = null;
@@ -61,7 +63,9 @@ public class TileMapManager : MonoBehaviour {
                 if (genTile.hasJumpTrigger) {
                     GameObject jumpTrigger = PatternFactory.CreateJumpTrigger();
                     jumpTrigger.transform.position = new Vector3(col + 0.5f, row + 0.5f, jumpTrigger.transform.position.z);
+                    jumpTrigger.transform.parent = this.gameObject.transform;
                 }
+                newTiles[col][row] = newTileGameObject;
             }
         }
 
