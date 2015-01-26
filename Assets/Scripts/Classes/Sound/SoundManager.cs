@@ -113,11 +113,13 @@ public class SoundManager : MonoBehaviour {
   public void ConfigureSoundDictionary() {
     soundDictionary[AudioType.None] = "path/to/file/from/root level";
 
-    soundDictionary [AudioType.Jump1] = "Sound/jump1";
-		soundDictionary [AudioType.Jump2] = "Sound/jump2";
-		soundDictionary [AudioType.Correct1] = "Sound/success1";
-		soundDictionary [AudioType.Correct2] = "Sound/success2";
-        soundDictionary [AudioType.RobotDemo] = "Sound/robot_demo";
+    soundDictionary[AudioType.Jump1] = "Sound/jump1";
+    soundDictionary[AudioType.Jump2] = "Sound/jump2";
+    soundDictionary[AudioType.Correct1] = "Sound/success1";
+    soundDictionary[AudioType.Correct2] = "Sound/success2";
+    soundDictionary[AudioType.RobotDemo] = "Sound/robot_demo";
+    soundDictionary[AudioType.Music] = "Sound/RobotMusic/mx_full";
+    soundDictionary[AudioType.Melody] = "Sound/RobotMusic/mx_melody";
 
   }
 

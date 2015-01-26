@@ -8,5 +8,9 @@ public enum Pattern {
     Fleming,
     Mondrian,
     Munch,
-    Kandinsky
+    Kandinsky,
+    // Tiles
+    Brown,
+    Blue,
+    Grass,
 }

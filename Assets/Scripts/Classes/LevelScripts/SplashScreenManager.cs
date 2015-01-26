@@ -9,6 +9,9 @@ public class SplashScreenManager : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		FadeManager.Instance.PerformFade(Color.black, Color.clear, 2, true);
+		SoundManager.Instance.Play(AudioType.Correct1);
+				// soundDictionary [AudioType.Correct1] = "Sound/success1";
+
 	}
 	
 	// Update is called once per frame

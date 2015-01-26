@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour {
     winCollider.transform.position = new Vector3(0, TileMapManager.Instance.tiles[0][0].transform.position.y - 1, winCollider.transform.position.z);
     failCollider.transform.position = new Vector3(TileMapManager.Instance.tiles[tileMapWidth - 1][0].transform.position.x, 0, winCollider.transform.position.z);
 
-    SoundManager.Instance.PlayMusic(AudioType.RobotDemo);
+    SoundManager.Instance.PlayMusic(AudioType.Music);
   }
 
   public void Update() {

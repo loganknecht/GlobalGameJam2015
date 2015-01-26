@@ -6,5 +6,7 @@
   Correct1,
   Correct2,
   RobotDemo,
+  Music,
+  Melody,
 }
 
