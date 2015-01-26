@@ -2,8 +2,14 @@
 using System.Collections;
 
 public class JumpTrigger : MonoBehaviour {
+	public bool debug = false;
+	public GameObject debugSprite;
+
 	// Use this for initialization
 	void Start () {
+		if(debugSprite != null) {
+			debugSprite.SetActive(debug);
+		}
 	}
 	
 	// Update is called once per frame

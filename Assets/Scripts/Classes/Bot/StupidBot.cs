@@ -56,7 +56,7 @@ public class StupidBot : Bot {
 
         if(jumpDetection.detectedJump) {
             var obj = SoundManager.Instance.Play(Random.Range(0, 100) > 50 ? AudioType.Jump2 : AudioType.Jump1);
-            Debug.Log("playing sound " + obj);
+            // Debug.Log("playing sound " + obj);
             movementLogic.TriggerJump();
             jumpDetection.Reset();
         }
@@ -64,7 +64,7 @@ public class StupidBot : Bot {
         if(jumpDetection.detectedSpikes) {
           jumpDetection.ResetSpikes();
           rigidBody.velocity = rigidBody.velocity * 0.5f;
-          Debug.Log("spikes zomg");
+          // Debug.Log("spikes zomg");
         }
     }
 
