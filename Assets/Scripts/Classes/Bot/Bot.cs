@@ -31,6 +31,7 @@ public class Bot : MonoBehaviour {
 	public virtual void PerformLogic() {
 		PerformJumpLogic();
 		PerformMovementLogic();
+		UpdateAnimationController();
 	}
 
 	public virtual void PerformMovementLogic() {

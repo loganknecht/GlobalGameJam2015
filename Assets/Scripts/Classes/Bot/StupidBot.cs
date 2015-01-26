@@ -67,4 +67,14 @@ public class StupidBot : Bot {
           Debug.Log("spikes zomg");
         }
     }
+
+    public override void UpdateAnimationController() {
+        animationController.SetBool("MovingLeft", false);
+        animationController.SetBool("MovingRight", false);
+        animationController.SetBool("IsJumping", false);
+        
+        animationController.SetBool("MovingLeft", movementLogic.movingLeft);
+        animationController.SetBool("MovingRight", movementLogic.movingRight);
+        animationController.SetBool("IsJumping", (movementLogic.jumpTriggered && movementLogic.hasUsedJump));
+    }
 }

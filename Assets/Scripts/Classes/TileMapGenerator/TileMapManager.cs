@@ -43,9 +43,6 @@ public class TileMapManager : MonoBehaviour {
     }
 
     public void GenerateTileMap(GeneratedTile[][] newTileMap) {
-        GameObject tileMap = new GameObject();
-        tileMap.AddComponent<TileMap>();
-
         Tile[][] newTiles = new Tile[newTileMap.Length][];
         for(int col = 0; col < newTileMap.Length; col++) {
             newTiles[col] = new Tile[newTileMap[0].Length];
