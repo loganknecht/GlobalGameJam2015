@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof(Movement))]
+// [RequireComponent (typeof(Movement))]
 // [RequireComponent (typeof(Rigidbody))]
 public class Bot : MonoBehaviour {
 
+	public Animator animationController;
 	public Movement movementLogic;
 	public Rigidbody2D rigidBody;
 	public JumpDetection jumpDetection;
@@ -39,5 +40,8 @@ public class Bot : MonoBehaviour {
 	}
 
 	public virtual void TriggerJump() {
+	}
+
+	public virtual void UpdateAnimationController() {
 	}
 }
